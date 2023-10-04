@@ -119,3 +119,19 @@ AS
     END;
 GO
 
+--Hàm thủ tục Insert data quản trị
+CREATE PROCEDURE [dbo].[sp_Insert_QuanTri](
+	@hoten nvarchar(150),
+	@diachi nvarchar(250),
+	@gioitinh nvarchar(30),
+	@email nvarchar(100),
+	@taikhoan nvarchar(100),
+	@matkhau nvarchar(100)
+)
+AS
+    BEGIN
+       insert into QuanTri(hoten, diachi, gioitinh, email, taikhoan, matkhau)
+	   values(@hoten, @diachi, @gioitinh, @email, @taikhoan, @matkhau);
+    END;
+GO
+
