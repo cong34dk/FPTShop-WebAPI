@@ -5,7 +5,7 @@ GO
 SELECT * FROM KhachHangs
 GO
 
---Hàm tìm kiếm khách hàng theo mã id
+--Hàm thủ tục Insert data khách hàng
 
 
 CREATE PROCEDURE sp_InsertKhachHang
@@ -118,3 +118,4 @@ AS
         END;
     END;
 GO
+

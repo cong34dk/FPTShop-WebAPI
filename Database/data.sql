@@ -350,3 +350,19 @@ REFERENCES [dbo].[LoaiTaiKhoans] ([MaLoai])
 GO
 ALTER TABLE [dbo].[TaiKhoans] CHECK CONSTRAINT [FK_Accounts_TypeAccounts]
 GO
+
+
+CREATE TABLE [dbo].[QuanTri](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[hoten] [nvarchar](150) NULL,
+	[diachi] [nvarchar](250) NULL,
+	[gioitinh] [nvarchar](30) NULL,
+	[email] [nvarchar](100) NULL,
+	[taikhoan] [nvarchar](100) NULL,
+	[matkhau] [nvarchar](100) NULL,
+ CONSTRAINT [PK_QuanTri] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
