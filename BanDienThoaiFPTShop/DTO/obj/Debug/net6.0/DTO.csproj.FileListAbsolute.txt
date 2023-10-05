@@ -1,0 +1,12 @@
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\bin\Debug\net6.0\DTO.deps.json
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\bin\Debug\net6.0\DTO.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\bin\Debug\net6.0\DTO.pdb
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\obj\Debug\net6.0\DTO.csproj.AssemblyReference.cache
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\obj\Debug\net6.0\DTO.GeneratedMSBuildEditorConfig.editorconfig
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\obj\Debug\net6.0\DTO.AssemblyInfoInputs.cache
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\obj\Debug\net6.0\DTO.AssemblyInfo.cs
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\obj\Debug\net6.0\DTO.csproj.CoreCompileInputs.cache
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\obj\Debug\net6.0\DTO.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\obj\Debug\net6.0\refint\DTO.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\obj\Debug\net6.0\DTO.pdb
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DTO\obj\Debug\net6.0\ref\DTO.dll

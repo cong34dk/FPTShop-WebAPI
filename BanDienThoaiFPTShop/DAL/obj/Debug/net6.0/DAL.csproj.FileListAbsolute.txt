@@ -1,0 +1,17 @@
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\bin\Debug\net6.0\DAL.deps.json
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\bin\Debug\net6.0\DAL.runtimeconfig.json
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\bin\Debug\net6.0\DAL.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\bin\Debug\net6.0\DAL.pdb
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\bin\Debug\net6.0\DTO.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\bin\Debug\net6.0\DTO.pdb
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\DAL.csproj.AssemblyReference.cache
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\DAL.AssemblyInfoInputs.cache
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\DAL.AssemblyInfo.cs
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\DAL.csproj.CoreCompileInputs.cache
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\DAL.csproj.CopyComplete
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\DAL.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\refint\DAL.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\DAL.pdb
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\DAL.genruntimeconfig.cache
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\DAL\obj\Debug\net6.0\ref\DAL.dll

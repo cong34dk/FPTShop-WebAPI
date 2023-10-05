@@ -135,3 +135,6 @@ AS
     END;
 GO
 
+
+
+SELECT * FROM sys.procedures;
