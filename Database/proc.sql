@@ -119,19 +119,29 @@ AS
     END;
 GO
 
---Hàm thủ tục Insert data quản trị
-CREATE PROCEDURE [dbo].[sp_Insert_QuanTri](
-	@hoten nvarchar(150),
-	@diachi nvarchar(250),
-	@gioitinh nvarchar(30),
-	@email nvarchar(100),
-	@taikhoan nvarchar(100),
-	@matkhau nvarchar(100)
-)
+--Hàm procudre tài khoản
+CREATE PROCEDURE sp_login (@taikhoan nvarchar(50), @matkhau nvarchar(50))
 AS
     BEGIN
-       insert into QuanTri(hoten, diachi, gioitinh, email, taikhoan, matkhau)
-	   values(@hoten, @diachi, @gioitinh, @email, @taikhoan, @matkhau);
+      SELECT  *
+      FROM TaiKhoans
+      where TenTaiKhoan= @taikhoan and MatKhau = @matkhau;
+    END;
+GO
+
+
+--Tìm kiếm id hóa đơn
+CREATE PROCEDURE sp_hoadon_get_by_id(@MaHoaDon int)
+AS
+    BEGIN
+        SELECT h.*, 
+        (
+            SELECT c.*
+            FROM ChiTietHoaDons AS c
+            WHERE h.MaHoaDon = c.MaHoaDon FOR JSON PATH --trả về dưới dạng JSON bằng FOR JSON PATH. Điều này tạo ra một chuỗi JSON chứa thông tin về chi tiết hóa đơn.
+        ) AS list_json_chitiethoadon
+        FROM HoaDons AS h
+        WHERE  h.MaHoaDon = @MaHoaDon;
     END;
 GO
 

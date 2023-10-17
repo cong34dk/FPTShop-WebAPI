@@ -1,7 +1,7 @@
 ﻿USE master
 DROP DATABASE IF EXISTS [BanDienThoai_NguyenDinhCong]
 GO
---Tạo database
+-----Tạo database
 CREATE DATABASE [BanDienThoai_NguyenDinhCong]
 USE [BanDienThoai_NguyenDinhCong]
 GO
@@ -352,19 +352,27 @@ ALTER TABLE [dbo].[TaiKhoans] CHECK CONSTRAINT [FK_Accounts_TypeAccounts]
 GO
 
 
-CREATE TABLE [dbo].[QuanTri](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[hoten] [nvarchar](150) NULL,
-	[diachi] [nvarchar](250) NULL,
-	[gioitinh] [nvarchar](30) NULL,
-	[email] [nvarchar](100) NULL,
-	[taikhoan] [nvarchar](100) NULL,
-	[matkhau] [nvarchar](100) NULL,
- CONSTRAINT [PK_QuanTri] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+-----Insert data
+
+----Insert table LoaiTaiKhoans
+SET IDENTITY_INSERT [dbo].[LoaiTaiKhoans] ON 
+
+INSERT [dbo].[LoaiTaiKhoans] ([MaLoai], [TenLoai], [MoTa]) VALUES (1, N'Admin', NULL)
+INSERT [dbo].[LoaiTaiKhoans] ([MaLoai], [TenLoai], [MoTa]) VALUES (2, N'KhachHang', NULL)
+INSERT [dbo].[LoaiTaiKhoans] ([MaLoai], [TenLoai], [MoTa]) VALUES (3, N'QuanLy', NULL)
+SET IDENTITY_INSERT [dbo].[LoaiTaiKhoans] OFF
+GO
+
+----Insert table TaiKhoans
+SET IDENTITY_INSERT [dbo].[TaiKhoans] ON 
+INSERT [dbo].[TaiKhoans] ([MaTaiKhoan], [LoaiTaiKhoan], [TenTaiKhoan], [MatKhau], [Email]) VALUES (1, 1, N'admin', N'123', N'bandienthoai@gmail.com')
+INSERT [dbo].[TaiKhoans] ([MaTaiKhoan], [LoaiTaiKhoan], [TenTaiKhoan], [MatKhau], [Email]) VALUES (2, 1, N'cong', N'123', N'cong@gmail.com')
+SET IDENTITY_INSERT [dbo].[TaiKhoans] OFF
+
 GO
 
 select * from KhachHangs
+
+select * from LoaiTaiKhoans
+
+select* from TaiKhoans
