@@ -11,6 +11,6 @@ build_property.RootNamespace = WebAPI
 build_property.ProjectDir = D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\WebAPI\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\WebAPI
 build_property._RazorSourceGeneratorDebug = 

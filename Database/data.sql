@@ -376,3 +376,7 @@ select * from KhachHangs
 select * from LoaiTaiKhoans
 
 select* from TaiKhoans
+
+select * from HoaDons
+
+select * from ChiTietHoaDons
