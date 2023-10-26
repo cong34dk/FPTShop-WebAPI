@@ -146,5 +146,56 @@ AS
 GO
 
 
+DECLARE @MaHoaDon int
+SET @MaHoaDon = 1 
+
+EXEC sp_hoadon_get_by_id @MaHoaDon
+
+----Stored lấy về tất cả tài khoản từ bảng TaiKhoans
+CREATE PROCEDURE sp_get_all_users
+AS
+BEGIN
+    SELECT * FROM TaiKhoans;
+END
+
+
+-- Tạo stored procedure để chèn dữ liệu vào bảng TaiKhoans mà không cần nhập MaTaiKhoan
+CREATE PROCEDURE sp_create_user
+    @LoaiTaiKhoan int,
+    @TenTaiKhoan nvarchar(50),
+    @MatKhau nvarchar(50),
+    @Email nvarchar(150)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Thêm tài khoản mới vào bảng TaiKhoans
+    INSERT INTO [dbo].[TaiKhoans] ([LoaiTaiKhoan], [TenTaiKhoan], [MatKhau], [Email])
+    VALUES (@LoaiTaiKhoan, @TenTaiKhoan, @MatKhau, @Email);
+
+    -- Lấy mã tài khoản mới đã được tạo tự động (nếu sử dụng cột Identity)
+    DECLARE @NewMaTaiKhoan int;
+    SET @NewMaTaiKhoan = SCOPE_IDENTITY();
+
+    -- Trả về mã tài khoản của tài khoản mới được thêm vào
+    SELECT @NewMaTaiKhoan AS MaTaiKhoan;
+END
 
 SELECT * FROM sys.procedures;
+
+exec sp_get_all_users
+
+EXEC sp_create_user
+    @LoaiTaiKhoan = 1,
+    @TenTaiKhoan = 'hiep',
+    @MatKhau = '123',
+    @Email = 'hiep@gmail.com';
+
+
+-- Xóa stored procedure có tên "usp_InsertTaiKhoan"
+DROP PROCEDURE sp_create_user;
+
+
+-- Xóa tài khoản dựa trên mã tài khoản
+DELETE FROM [dbo].[TaiKhoans]
+WHERE [MaTaiKhoan] = N'4';

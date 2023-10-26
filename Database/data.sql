@@ -371,6 +371,17 @@ SET IDENTITY_INSERT [dbo].[TaiKhoans] OFF
 
 GO
 
+----Insert table HoaDons
+INSERT INTO HoaDons (TrangThai, NgayTao, NgayDuyet, TongGia, TenKH, GioiTinh, Diachi, Email, SDT, DiaChiGiaoHang, ThoiGianGiaoHang)
+VALUES (1, GETDATE(), GETDATE(), 1000, 'Nguyen Van A', 1, '123 Duong ABC, Quan XYZ', 'email1@example.com', '1234567890', 'DiaChi1', GETDATE());
+
+INSERT INTO HoaDons (TrangThai, NgayTao, NgayDuyet, TongGia, TenKH, GioiTinh, Diachi, Email, SDT, DiaChiGiaoHang, ThoiGianGiaoHang)
+VALUES (0, GETDATE(), NULL, 750, 'Nguyen Thi B', 0, '456 Duong XYZ, Quan ABC', 'email2@example.com', '9876543210', 'DiaChi2', NULL);
+
+INSERT INTO HoaDons (TrangThai, NgayTao, NgayDuyet, TongGia, TenKH, GioiTinh, Diachi, Email, SDT, DiaChiGiaoHang, ThoiGianGiaoHang)
+VALUES (1, GETDATE(), GETDATE(), 1200, 'Tran Van C', 1, '789 Duong DEF, Quan XYZ', 'email3@example.com', '1112223333', 'DiaChi3', GETDATE());
+
+
 select * from KhachHangs
 
 select * from LoaiTaiKhoans
