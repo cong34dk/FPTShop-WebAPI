@@ -181,6 +181,44 @@ BEGIN
     SELECT @NewMaTaiKhoan AS MaTaiKhoan;
 END
 
+
+-----Tạo procedure thực hiện sửa tài khoản
+CREATE PROCEDURE sp_update_user
+    @MaTaiKhoan int,
+    @LoaiTaiKhoan int,
+    @TenTaiKhoan nvarchar(50),
+    @MatKhau nvarchar(50),
+    @Email nvarchar(150)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Thực hiện cập nhật thông tin tài khoản trong bảng TaiKhoans
+    UPDATE [dbo].[TaiKhoans]
+    SET [LoaiTaiKhoan] = @LoaiTaiKhoan,
+        [TenTaiKhoan] = @TenTaiKhoan,
+        [MatKhau] = @MatKhau,
+        [Email] = @Email
+    WHERE [MaTaiKhoan] = @MaTaiKhoan;
+
+    -- Trả về số hàng bị ảnh hưởng
+    SELECT @@ROWCOUNT AS 'RowsAffected';
+END
+
+-----PROC xóa tài khoản
+CREATE PROCEDURE sp_delete_user
+    @MaTaiKhoan int
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Thực hiện xóa tài khoản từ bảng TaiKhoans
+    DELETE FROM [dbo].[TaiKhoans]
+    WHERE [MaTaiKhoan] = @MaTaiKhoan;
+END
+
+
+
 SELECT * FROM sys.procedures;
 
 exec sp_get_all_users
@@ -199,3 +237,20 @@ DROP PROCEDURE sp_create_user;
 -- Xóa tài khoản dựa trên mã tài khoản
 DELETE FROM [dbo].[TaiKhoans]
 WHERE [MaTaiKhoan] = N'4';
+
+
+-- Chạy stored procedure sp_update_user để cập nhật tài khoản người dùng
+DECLARE @MaTaiKhoan int = 11; 
+DECLARE @LoaiTaiKhoan int = 2; 
+DECLARE @TenTaiKhoan nvarchar(50) = N'okroi'; 
+DECLARE @MatKhau nvarchar(50) = N'000';
+DECLARE @Email nvarchar(150) = N'newemail@example.com'; 
+
+EXEC sp_update_user
+    @MaTaiKhoan,
+    @LoaiTaiKhoan,
+    @TenTaiKhoan,
+    @MatKhau,
+    @Email;
+
+exec sp_delete_user 9
