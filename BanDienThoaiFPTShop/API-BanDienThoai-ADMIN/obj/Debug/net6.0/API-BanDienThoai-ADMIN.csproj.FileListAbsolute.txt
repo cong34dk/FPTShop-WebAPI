@@ -396,3 +396,10 @@ D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Ba
 D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\MailKit.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\MimeKit.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\NETCore.MailKit.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\SendGrid.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-BanDienThoai-ADMIN\bin\Debug\net6.0\StarkbankEcdsa.dll

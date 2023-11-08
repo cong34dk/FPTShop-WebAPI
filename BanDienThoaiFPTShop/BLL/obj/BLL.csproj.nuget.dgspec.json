@@ -52,6 +52,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.21, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.28.1, )"
             }
           },
           "imports": [

@@ -59,5 +59,38 @@ namespace BLL
 
             return null; // Trả về null nếu đăng nhập không thành công
         }
+
+        public List<UserModel> GetAllUsers()
+        {
+            return _userDA.GetAllUsers();
+        }
+
+        public UserModel AddUser(UserModel userModel)
+        {
+            // Thực hiện xử lý thêm tài khoản và trả về tài khoản vừa thêm
+            var addedUser = _userDA.AddUser(userModel);
+            return addedUser;
+        }
+
+        public UserModel UpdateUser(UserModel userModel)
+        {
+            if (userModel != null)
+            {
+                return _userDA.UpdateUser(userModel);
+            }
+
+            return null;
+        }
+
+        public bool DeleteUser(int userId)
+        {
+            if (userId > 0)
+            {
+                return _userDA.DeleteUser(userId);
+            }
+
+            return false;
+        }
+
     }
 }

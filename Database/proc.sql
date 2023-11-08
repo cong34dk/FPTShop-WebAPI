@@ -218,6 +218,26 @@ BEGIN
 END
 
 
+-----Tạo procedure thực hiện thêm sản phẩm
+CREATE PROCEDURE sp_AddSanPham
+    @MaChuyenMuc int,
+    @TenSanPham nvarchar(150),
+    @AnhDaiDien nvarchar(350),
+    @Gia decimal(18, 0),
+    @GiaGiam decimal(18, 0),
+    @SoLuong int,
+    @TrangThai bit,
+    @LuotXem int,
+    @DacBiet bit
+AS
+BEGIN
+    INSERT INTO dbo.SanPhams (MaChuyenMuc, TenSanPham, AnhDaiDien, Gia, GiaGiam, SoLuong, TrangThai, LuotXem, DacBiet)
+    VALUES (@MaChuyenMuc, @TenSanPham, @AnhDaiDien, @Gia, @GiaGiam, @SoLuong, @TrangThai, @LuotXem, @DacBiet)
+    
+    SELECT CAST(scope_identity() AS int) -- Trả về ID của sản phẩm mới được thêm
+END
+GO
+
 
 SELECT * FROM sys.procedures;
 
@@ -254,3 +274,178 @@ EXEC sp_update_user
     @Email;
 
 exec sp_delete_user 9
+
+
+
+EXEC sp_AddSanPham
+    @MaChuyenMuc = 1, -- Giả sử mã chuyên mục là 1
+    @TenSanPham = N'Điện thoại iPhone 13',
+    @AnhDaiDien = N'iphone_13.png',
+    @Gia = 20000000,
+    @GiaGiam = 19000000,
+    @SoLuong = 100,
+    @TrangThai = 1, -- 1 cho sản phẩm đang hoạt động, 0 cho ngừng kinh doanh
+    @LuotXem = 0, -- Số lượt xem ban đầu thường là 0
+    @DacBiet = 0 -- 0 cho sản phẩm không đặc biệt, 1 cho sản phẩm đặc biệt
+
+
+-----Stored Procedure để thêm một sản phẩm mới
+CREATE PROCEDURE sp_InsertSanPham
+    @MaChuyenMuc int,
+    @TenSanPham nvarchar(150),
+    @AnhDaiDien nvarchar(350),
+    @Gia decimal(18, 0),
+    @GiaGiam decimal(18, 0),
+    @SoLuong int,
+    @TrangThai bit,
+    @LuotXem int,
+    @DacBiet bit
+AS
+BEGIN
+    INSERT INTO SanPhams (MaChuyenMuc, TenSanPham, AnhDaiDien, Gia, GiaGiam, SoLuong, TrangThai, LuotXem, DacBiet)
+    VALUES (@MaChuyenMuc, @TenSanPham, @AnhDaiDien, @Gia, @GiaGiam, @SoLuong, @TrangThai, @LuotXem, @DacBiet)
+    
+    SELECT SCOPE_IDENTITY() -- Trả về ID của sản phẩm vừa được thêm vào
+END
+GO
+
+-----Stored Procedure để cập nhật thông tin sản phẩm:
+CREATE PROCEDURE sp_UpdateSanPham
+    @MaSanPham int,
+    @MaChuyenMuc int,
+    @TenSanPham nvarchar(150),
+    @AnhDaiDien nvarchar(350),
+    @Gia decimal(18, 0),
+    @GiaGiam decimal(18, 0),
+    @SoLuong int,
+    @TrangThai bit,
+    @LuotXem int,
+    @DacBiet bit
+AS
+BEGIN
+    UPDATE SanPhams
+    SET
+        MaChuyenMuc = @MaChuyenMuc,
+        TenSanPham = @TenSanPham,
+        AnhDaiDien = @AnhDaiDien,
+        Gia = @Gia,
+        GiaGiam = @GiaGiam,
+        SoLuong = @SoLuong,
+        TrangThai = @TrangThai,
+        LuotXem = @LuotXem,
+        DacBiet = @DacBiet
+    WHERE MaSanPham = @MaSanPham
+END
+GO
+
+----Stored Procedure để xóa sản phẩm:
+CREATE PROCEDURE sp_DeleteSanPham
+    @MaSanPham int
+AS
+BEGIN
+    DELETE FROM SanPhams
+    WHERE MaSanPham = @MaSanPham
+END
+GO
+
+
+----Stored Procedure để tìm kiếm sản phẩm:
+CREATE PROCEDURE sp_SearchSanPhams
+    @Keyword nvarchar(150),
+    @PageIndex int,
+    @PageSize int,
+    @Total int OUTPUT
+AS
+BEGIN
+    -- Tính số lượng bản ghi tìm kiếm được
+    SELECT @Total = COUNT(*)
+    FROM SanPhams
+    WHERE (@Keyword IS NULL OR TenSanPham LIKE '%' + @Keyword + '%')
+
+    -- Thực hiện truy vấn tìm kiếm và phân trang
+    SELECT *
+    FROM
+    (
+        SELECT ROW_NUMBER() OVER (ORDER BY MaSanPham) as RowNum, *
+        FROM SanPhams
+        WHERE (@Keyword IS NULL OR TenSanPham LIKE '%' + @Keyword + '%')
+    ) AS SanPhamsWithRowNumbers
+    WHERE RowNum BETWEEN (@PageIndex - 1) * @PageSize + 1 AND @PageIndex * @PageSize
+
+    -- Trả về tổng số lượng bản ghi tìm kiếm được
+    SELECT @Total AS TotalRecords
+END
+GO
+
+----- Stored lấy về tất cả các sản phẩm từ bảng SanPhams:
+CREATE PROCEDURE sp_GetAllSanPhams
+AS
+BEGIN
+    SELECT * FROM SanPhams;
+END
+GO
+
+------stored procedure để lấy về thông tin sản phẩm dựa trên ID từ bảng SanPhams
+CREATE PROCEDURE sp_GetSanPhamByID
+    @MaSanPham INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT *
+    FROM
+        SanPhams
+    WHERE
+        MaSanPham = @MaSanPham;
+END
+GO
+
+
+--------Chạy stored của SanPhams
+--------
+DECLARE @NewProductId INT;
+
+EXEC sp_InsertSanPham
+    @MaChuyenMuc = 1, -- Hoặc NULL nếu không có chuyên mục
+    @TenSanPham = N'Iphone 6',
+    @AnhDaiDien = N'iphone6.png',
+    @Gia = 1000000,
+    @GiaGiam = 900000,
+    @SoLuong = 100,
+    @TrangThai = 1, -- Hoặc 0
+    @LuotXem = 0,
+    @DacBiet = 0; -- Hoặc 1
+
+SELECT @NewProductId AS NewProductId;
+
+----------
+EXEC sp_UpdateSanPham
+    @MaSanPham = 6,
+    @MaChuyenMuc = 1, -- Hoặc NULL nếu không có chuyên mục
+    @TenSanPham = N'Iphone 4',
+    @AnhDaiDien = N'iphone4.png',
+    @Gia = 1100000,
+    @GiaGiam = 950000,
+    @SoLuong = 150,
+    @TrangThai = 1, -- Hoặc 0
+    @LuotXem = 10,
+    @DacBiet = 0; -- Hoặc 1
+
+--------
+EXEC sp_DeleteSanPham @MaSanPham = 6;
+
+------ Search
+DECLARE @TotalRecords INT;
+
+EXEC sp_SearchSanPhams
+    @Keyword = N'iPhone',
+    @PageIndex = 1,
+    @PageSize = 10,
+    @Total = @TotalRecords OUTPUT;
+
+SELECT @TotalRecords AS TotalNumberOfProducts;
+
+----
+EXEC sp_GetAllSanPhams;
+
+EXEC sp_GetSanPhamByID 3

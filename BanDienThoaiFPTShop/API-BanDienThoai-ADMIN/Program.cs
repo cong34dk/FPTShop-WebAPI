@@ -53,7 +53,9 @@ builder.Services.AddDbContext<BanDienThoai_NguyenDinhCongContext>(options =>
 //Khai báo ?? ch?y ??i t??ng
 builder.Services.AddScoped<IUserBL, UserBL>();
 builder.Services.AddScoped<IUserDA, UserDA>();
-
+builder.Services.AddScoped<IEmailServiceBL, EmailServiceBL>();
+builder.Services.AddScoped<ISanPhamBL, SanPhamBL>();
+builder.Services.AddScoped<ISanPhamDA, SanPhamDA>();
 
 var app = builder.Build();
 

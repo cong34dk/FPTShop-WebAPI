@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jzGjGImr+RjBUe1we5Np4Q3n3wMtual/PEKK3xRqXcsQB256sQl7Pk8fgJ9DpdTvTg2jovmqU/jE7vbckuB/sQ==",
+  "dgSpecHash": "DfEiYmhFLx+0Aox+Z9lMjDDBIY2CozjCu/cTS/AIFZjjUsqK6SVMZ+WTqikerwAbE3nFXan+cR+eH0eNVabjPQ==",
   "success": true,
-  "projectFilePath": "D:\\congIT\\Web API\\BTL_PTPMHDV_10121760_NguyenDinhCong\\BanDienThoaiFPTShop\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "D:\\congIT\\Web API\\BTL_PTPMHDV_10121760_NguyenDinhCong\\BanDienThoaiFPTShop\\WebAPI\\API_OK_1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\This PC\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\This PC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

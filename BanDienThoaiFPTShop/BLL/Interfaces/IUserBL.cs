@@ -10,5 +10,9 @@ namespace BLL.Interfaces
     public interface IUserBL
     {
         UserModel Login(string taikhoan, string matkhau);
+        List<UserModel> GetAllUsers();
+        UserModel AddUser(UserModel userModel);
+        UserModel UpdateUser(UserModel userModel);
+        bool DeleteUser(int userId);
     }
 }

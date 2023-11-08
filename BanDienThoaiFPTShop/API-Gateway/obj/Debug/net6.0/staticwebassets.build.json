@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "64kN9UaZ5KvowA0J0XX2QhTHenU02KJN4LzYSSVVh3I=",
+  "Source": "API-Gateway",
+  "BasePath": "_content/API-Gateway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

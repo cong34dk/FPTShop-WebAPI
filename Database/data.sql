@@ -381,6 +381,22 @@ VALUES (0, GETDATE(), NULL, 750, 'Nguyen Thi B', 0, '456 Duong XYZ, Quan ABC', '
 INSERT INTO HoaDons (TrangThai, NgayTao, NgayDuyet, TongGia, TenKH, GioiTinh, Diachi, Email, SDT, DiaChiGiaoHang, ThoiGianGiaoHang)
 VALUES (1, GETDATE(), GETDATE(), 1200, 'Tran Van C', 1, '789 Duong DEF, Quan XYZ', 'email3@example.com', '1112223333', 'DiaChi3', GETDATE());
 
+----Insert table SanPhams
+INSERT INTO [dbo].[SanPhams] (MaChuyenMuc, TenSanPham, AnhDaiDien, Gia, GiaGiam, SoLuong, TrangThai, LuotXem, DacBiet)
+VALUES
+    (1, N'Điện thoại iPhone 12', N'iphone_12.png', 20000000, 19000000, 50, 1, 100, 0),
+    (2, N'Điện thoại Samsung Galaxy S21', N'samsung_s21.png', 18000000, 17000000, 30, 1, 150, 1),
+    (3, N'Điện thoại Xiaomi Mi 11', N'xiaomi_mi11.png', 15000000, 14000000, 40, 1, 200, 0);
+
+----Insert table ChuyenMucs
+INSERT INTO dbo.ChuyenMucs (MaChuyenMucCha, TenChuyenMuc, DacBiet, NoiDung)
+VALUES
+    (NULL, N'Điện thoại thông minh', 1, N'Chuyên mục về các dòng điện thoại thông minh cao cấp.'),
+    (NULL, N'Phụ kiện điện thoại', 0, N'Chuyên mục về phụ kiện điện thoại như ốp lưng, sạc, tai nghe...'),
+    (1, N'iPhone', 0, N'Chuyên mục về các dòng iPhone.');
+
+GO
+
 
 select * from KhachHangs
 
@@ -391,3 +407,7 @@ select* from TaiKhoans
 select * from HoaDons
 
 select * from ChiTietHoaDons
+
+select * from SanPhams
+
+select * from ChuyenMucs

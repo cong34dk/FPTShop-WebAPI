@@ -3501,9 +3501,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\congIT\\Web API\\BTL_PTPMHDV_10121760_NguyenDinhCong\\BanDienThoaiFPTShop\\WebAPI\\WebAPI.csproj",
-      "projectName": "WebAPI",
-      "projectPath": "D:\\congIT\\Web API\\BTL_PTPMHDV_10121760_NguyenDinhCong\\BanDienThoaiFPTShop\\WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "D:\\congIT\\Web API\\BTL_PTPMHDV_10121760_NguyenDinhCong\\BanDienThoaiFPTShop\\WebAPI\\API_OK_1.csproj",
+      "projectName": "API_OK_1",
+      "projectPath": "D:\\congIT\\Web API\\BTL_PTPMHDV_10121760_NguyenDinhCong\\BanDienThoaiFPTShop\\WebAPI\\API_OK_1.csproj",
       "packagesPath": "C:\\Users\\This PC\\.nuget\\packages\\",
       "outputPath": "D:\\congIT\\Web API\\BTL_PTPMHDV_10121760_NguyenDinhCong\\BanDienThoaiFPTShop\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
