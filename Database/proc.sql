@@ -430,7 +430,7 @@ EXEC sp_UpdateSanPham
     @TrangThai = 1, -- Hoặc 0
     @LuotXem = 10,
     @DacBiet = 0; -- Hoặc 1
-
+	 
 --------
 EXEC sp_DeleteSanPham @MaSanPham = 6;
 
@@ -449,3 +449,36 @@ SELECT @TotalRecords AS TotalNumberOfProducts;
 EXEC sp_GetAllSanPhams;
 
 EXEC sp_GetSanPhamByID 3
+
+----Stored lấy về tổng doanh thu
+CREATE PROCEDURE sp_GetTotalRevenue
+AS
+BEGIN
+    SELECT SUM(TongGia) AS TotalRevenue
+    FROM HoaDons
+    WHERE TrangThai = 1; -- Giả sử TrangThai = 1 đại diện cho hóa đơn đã được thanh toán
+END
+GO
+
+EXEC sp_GetTotalRevenue;
+
+-------Stored lấy về tổng doanh thu theo khoảng thời gian
+CREATE PROCEDURE sp_GetTotalRevenueByDateRange
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+    SELECT SUM(TongGia) AS TotalRevenue
+    FROM HoaDons
+    WHERE TrangThai = 1 AND NgayTao BETWEEN @StartDate AND @EndDate;
+END
+GO
+
+EXEC sp_GetTotalRevenueByDateRange @StartDate = '2023-01-01', @EndDate = '2023-12-31';
+
+
+    SELECT *
+    FROM
+        SanPhams
+    WHERE
+        MaSanPham = 2;
