@@ -56,6 +56,8 @@ builder.Services.AddScoped<IUserDA, UserDA>();
 builder.Services.AddScoped<IEmailServiceBL, EmailServiceBL>();
 builder.Services.AddScoped<ISanPhamBL, SanPhamBL>();
 builder.Services.AddScoped<ISanPhamDA, SanPhamDA>();
+builder.Services.AddScoped<IBaoCaoAdminBL, BaoCaoAdminBL>();
+builder.Services.AddScoped<IBaoCaoAdminDA, BaoCaoAdminDA>();
 
 var app = builder.Build();
 
