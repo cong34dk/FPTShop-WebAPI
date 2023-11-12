@@ -158,6 +158,18 @@ BEGIN
     SELECT * FROM TaiKhoans;
 END
 
+--Hàm thủ tục lấy về tài khoản theo mã ID
+CREATE PROCEDURE sp_get_by_id_user
+(
+	@Id int
+)
+AS
+BEGIN 
+	SELECT * FROM TaiKhoans WHERE MaTaiKhoan=@Id;
+END;
+GO
+
+EXEC sp_get_by_id_user 1
 
 -- Tạo stored procedure để chèn dữ liệu vào bảng TaiKhoans mà không cần nhập MaTaiKhoan
 CREATE PROCEDURE sp_create_user

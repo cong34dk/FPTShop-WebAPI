@@ -16,21 +16,6 @@ namespace API_BanDienThoai_ADMIN.Controllers
             _sanPhamBL = sanPhamBL;
         }
 
-        // Thêm mới sản phẩm
-        [HttpPost("create-SanPham")]
-        public IActionResult CreateSanPham([FromBody] SanPhamModel model)
-        {
-            try
-            {
-                _sanPhamBL.InsertSanPham(model);
-                return Ok(new { message = "Sản phẩm đã được thêm thành công!" });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = $"Lỗi: {ex.Message}" });
-            }
-        }
-
         // Lấy thông tin sản phẩm theo ID
         [HttpGet("get-by-id/{id}")]
         public ActionResult<SanPhamModel> GetSanPhamById(int id)
@@ -49,6 +34,22 @@ namespace API_BanDienThoai_ADMIN.Controllers
                 return BadRequest(new { message = $"Lỗi: {ex.Message}" });
             }
         }
+
+        // Thêm mới sản phẩm
+        [HttpPost("create-SanPham")]
+        public IActionResult CreateSanPham([FromBody] SanPhamModel model)
+        {
+            try
+            {
+                _sanPhamBL.InsertSanPham(model);
+                return Ok(new { message = "Sản phẩm đã được thêm thành công!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = $"Lỗi: {ex.Message}" });
+            }
+        }
+
 
         // Cập nhật thông tin sản phẩm
         [HttpPut("update-SanPham")]

@@ -8,8 +8,6 @@ namespace DTO
 {
     public class SanPhamModel
     {
-            // Identity không cần thiết trong DTO khi thêm mới vì nó được tạo tự động trong cơ sở dữ liệu.
-            // Tuy nhiên, nó cần thiết khi cập nhật hoặc xóa, vì vậy nó được giữ ở đây.
             public int MaSanPham { get; set; }
             public int? MaChuyenMuc { get; set; }
             public string TenSanPham { get; set; }

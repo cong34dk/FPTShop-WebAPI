@@ -32,6 +32,13 @@ namespace API_BanDienThoai_ADMIN.Controllers
             return _userBL.GetAllUsers();
         }
 
+        //Lấy về 1 user
+        [Route("get-by-id")]
+        [HttpGet]
+        public UserModel GetUserById(int userId)
+        {
+            return _userBL.GetUserById(userId);
+        }
 
         //Tạo tài khoản mới
         [Route("add-user")]

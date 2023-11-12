@@ -59,6 +59,17 @@ namespace BLL
 
             return null; // Trả về null nếu đăng nhập không thành công
         }
+        public UserModel GetUserById(int userId)
+        {
+            var user = _userDA.GetUserById(userId);
+
+            if (user == null || user.MaTaiKhoan == 0)
+            {
+                return null;
+            }
+
+            return user;
+        }
 
         public List<UserModel> GetAllUsers()
         {

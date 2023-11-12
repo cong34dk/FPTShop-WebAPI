@@ -62,6 +62,44 @@ namespace DAL
             }
         }
 
+        public UserModel GetUserById(int userId)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("sp_get_by_id_user", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add(new SqlParameter("@Id", userId));
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            var user = new UserModel();
+
+                            while (reader.Read())
+                            {
+                                user.MaTaiKhoan = reader.GetInt32(reader.GetOrdinal("MaTaiKhoan"));
+                                user.LoaiTaiKhoan = reader.GetInt32(reader.GetOrdinal("LoaiTaiKhoan"));
+                                user.TenTaiKhoan = reader.GetString(reader.GetOrdinal("TenTaiKhoan"));
+                                user.MatKhau = reader.GetString(reader.GetOrdinal("MatKhau"));
+                                user.Email = reader.GetString(reader.GetOrdinal("Email"));
+                            }
+
+                            return user;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
         public List<UserModel> GetAllUsers()
         {
             List<UserModel> users = new List<UserModel>();
