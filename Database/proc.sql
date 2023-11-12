@@ -494,3 +494,14 @@ EXEC sp_GetTotalRevenueByDateRange @StartDate = '2023-01-01', @EndDate = '2023-1
         SanPhams
     WHERE
         MaSanPham = 2;
+
+-----stored getALLDanhMuc
+CREATE PROCEDURE GetAllChuyenMuc
+AS
+BEGIN
+    SELECT * FROM ChuyenMucs;
+END;
+
+EXEC GetAllChuyenMuc
+
+select * from slide
