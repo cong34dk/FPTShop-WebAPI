@@ -10,5 +10,6 @@ namespace BLL.Interfaces
     public interface IHomeBL
     {
         List<ChuyenMuc> GetAllChuyenMuc();
+        List<Slide> GetAllSlide();
     }
 }

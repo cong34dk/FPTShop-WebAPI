@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fptshop.com.vn | , Laptop, Tablet, Phụ kiện chính hãng giá tốt nhất</title>
     <!-- main css -->
     <link rel="stylesheet" href="main.css">
@@ -139,11 +139,11 @@
         <section class="section-banner color-main">
             <div class="banner-left">
                 <div class="banner-left-slide">
-                    <!-- <img id="image" src="./assets/img/banner-left/1.webp" alt=""> -->
+                    <img id="image" ng-src="{{currentImage}}" alt="">
                     <div class="control">
-                        <button class="btn-prev btn" onclick="previousImage()"><i
+                        <button class="btn-prev btn" ng-click="previousImage()"><i
                                 class="fa-sharp fa-solid fa-arrow-left"></i></button>
-                        <button class="btn-next btn" onclick="nextImage()"><i
+                        <button class="btn-next btn" ng-click="nextImage()"><i
                                 class="fa-sharp fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
@@ -220,7 +220,7 @@
                 </tr>
             </table>
         </div>
-        
+
         <!-- end category-container -->
         <div class="banner-sale-1 center-wrapper mt-24 mb-24">
             <!-- <a href=""><img src="./assets/img/banner-sale/laptop.webp" alt="" title="Laptop gaming  H7"></a> -->
@@ -672,7 +672,7 @@
     </footer>
     <!-- end footer -->
     <!-- link Javascript -->
-    <script src="./main.js"></script>
+    <!-- <script src="./main.js"></script> -->
     <script src="./angular/angular.min.js"></script>
     <script src="./angular/home.js"></script>
 </body>

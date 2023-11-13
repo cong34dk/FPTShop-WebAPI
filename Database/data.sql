@@ -407,6 +407,16 @@ VALUES
 
 GO
 
+----Insert table Slide
+INSERT INTO [dbo].[Slide] (TieuDe, TieuDe1, TieuDe2, MoTa1, MoTa2, MoTa3, MoTa4, LinkAnh)
+VALUES
+(NULL, NULL, NULL, NULL, NULL, NULL, NULL, './assets/img/banner-left/1.webp'),
+(NULL, NULL, NULL, NULL, NULL, NULL, NULL, './assets/img/banner-left/2.webp'),
+(NULL, NULL, NULL, NULL, NULL, NULL, NULL, './assets/img/banner-left/3.webp'),
+(NULL, NULL, NULL, NULL, NULL, NULL, NULL, './assets/img/banner-left/4.webp'),
+(NULL, NULL, NULL, NULL, NULL, NULL, NULL, './assets/img/banner-left/5.webp')
+
+GO
 
 select * from KhachHangs
 
@@ -432,6 +442,7 @@ select * from TinTucs
 
 
 DELETE FROM ChuyenMucs;
+DELETE FROM Slide;
 
 DELETE FROM SanPhams WHERE MaChuyenMuc IN (SELECT MaChuyenMuc FROM ChuyenMucs);
 DELETE FROM ChuyenMucs;

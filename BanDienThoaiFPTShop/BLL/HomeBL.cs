@@ -22,5 +22,9 @@ namespace BLL
         {
             return _homeDA.GetAllChuyenMuc();
         }
+        public List<Slide> GetAllSlide()
+        {
+            return _homeDA.GetAllSlide();
+        }
     }
 }

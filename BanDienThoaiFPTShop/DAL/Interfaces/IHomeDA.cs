@@ -10,5 +10,6 @@ namespace DAL.Interfaces
     public interface IHomeDA
     {
         List<ChuyenMuc> GetAllChuyenMuc();
+        List<Slide> GetAllSlide();
     }
 }

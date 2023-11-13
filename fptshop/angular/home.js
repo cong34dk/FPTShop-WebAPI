@@ -2,8 +2,13 @@
 var app = angular.module("AppBanDienThoai", []);
 
 // Tạo controller để quản lý logic
-app.controller("HomeController", function ($scope, $http, $window) {
+app.controller("HomeController", function ($scope, $http, $window, $interval) {
+
+
   $scope.categories;
+  $scope.currentImage;
+  $scope.imageIndex = 0;
+
 
   $scope.LoadChuyenMuc = function () {
     $http({
@@ -18,6 +23,21 @@ app.controller("HomeController", function ($scope, $http, $window) {
     });
   };
 
+
+
+  $scope.LoadSlide = function (){
+    $http({
+        method: "GET",
+        url: "https://localhost:44321/api/Home/GetAllSlide",
+    }).then(function (response){
+        $scope.images = response.data;
+        $scope.currentImage = $scope.images[0].linkAnh;
+
+        // Sử dụng $interval để tự động chuyển ảnh sau 3 giây
+        $interval($scope.nextImage, 3000);      
+    })
+  }
+
   // Hàm chia mảng thành các mảng con với kích thước được chỉ định
   function chunkArray(array, size) {
     var result = [];
@@ -27,6 +47,24 @@ app.controller("HomeController", function ($scope, $http, $window) {
     return result;
   }
 
-  // Gọi API GetAllChuyenMuc khi trang được tải
+
+  $scope.nextImage = function () {
+    $scope.imageIndex++;
+    if ($scope.imageIndex >= $scope.images.length) {
+      $scope.imageIndex = 0;
+    }
+    $scope.currentImage = $scope.images[$scope.imageIndex].linkAnh;
+  };
+
+  $scope.previousImage = function () {
+    $scope.imageIndex--;
+    if ($scope.imageIndex < 0) {
+      $scope.imageIndex = $scope.images.length - 1;
+    }
+    $scope.currentImage = $scope.images[$scope.imageIndex].linkAnh;
+  };
+
+  // Gọi API khi trang được tải
   $scope.LoadChuyenMuc();
+  $scope.LoadSlide();
 });

@@ -23,5 +23,13 @@ namespace API_BanDienThoai_USER.Controllers
         {
             return _homeBL.GetAllChuyenMuc();
         }
+
+        [Route("GetAllSlide")]
+        [HttpGet]
+        public ActionResult<IEnumerable<Slide>> GetAllSlide()
+        {
+            return _homeBL.GetAllSlide();
+        }
+
     }
 }

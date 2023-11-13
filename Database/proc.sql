@@ -504,3 +504,11 @@ END;
 
 EXEC GetAllChuyenMuc
 
+-----stored GetAllSlide
+CREATE PROCEDURE GetAllSlide
+AS
+BEGIN
+    SELECT * FROM Slide;
+END;
+
+EXEC GetAllSlide
