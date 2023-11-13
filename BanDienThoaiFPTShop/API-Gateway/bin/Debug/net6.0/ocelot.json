@@ -1,0 +1,21 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Home/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44321
+        }
+      ],
+      "UpstreamPathTemplate": "/user/Home/{everything}",
+      "UpstreamHttpMethod": [ "GET" ]   
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7102",
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/ocelot"
+  }
+}

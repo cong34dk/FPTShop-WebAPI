@@ -25,3 +25,12 @@ D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Ga
 D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\obj\Debug\net6.0\API-Gateway.pdb
 D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\obj\Debug\net6.0\API-Gateway.genruntimeconfig.cache
 D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\obj\Debug\net6.0\ref\API-Gateway.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\bin\Debug\net6.0\ocelot.json
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\bin\Debug\net6.0\FluentValidation.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\congIT\Web API\BTL_PTPMHDV_10121760_NguyenDinhCong\BanDienThoaiFPTShop\API-Gateway\bin\Debug\net6.0\Ocelot.dll

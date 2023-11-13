@@ -1,4 +1,4 @@
-using BLL;
+﻿using BLL;
 using BLL.Interfaces;
 using DAL;
 using DAL.Interfaces;
@@ -50,7 +50,7 @@ builder.Services.AddAuthentication(x =>
 builder.Services.AddDbContext<BanDienThoai_NguyenDinhCongContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("connect")));
 
-//Khai b�o ?? ch?y ??i t??ng
+//Đăng ký dịch vụ
 builder.Services.AddScoped<IKhachHangBL, KhachHangBL>();
 builder.Services.AddScoped<IKhachHangDA, KhachHangDA>();
 builder.Services.AddScoped<IUserBL, UserBL>();
@@ -63,7 +63,7 @@ builder.Services.AddCors(p => p.AddPolicy("MyCors", build => { build.WithOrigins
 
 var app = builder.Build();
 
-// Th�m middleware CORS 
+// Thêm middleware CORS 
 app.UseCors("MyCors");
 
 // Configure the HTTP request pipeline.
