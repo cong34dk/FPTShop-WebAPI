@@ -15,6 +15,7 @@ namespace DAL.Models
         public string? TenChuyenMuc { get; set; }
         public bool DacBiet { get; set; }
         public string? NoiDung { get; set; }
+        public string? Link { get; set; }
 
         public virtual ICollection<SanPham> SanPhams { get; set; }
     }

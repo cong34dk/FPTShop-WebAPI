@@ -42,7 +42,8 @@ namespace DAL
                                 MaChuyenMucCha = reader["MaChuyenMucCha"] != DBNull.Value ? (int?)Convert.ToInt32(reader["MaChuyenMucCha"]) : null,
                                 TenChuyenMuc = Convert.ToString(reader["TenChuyenMuc"]),
                                 DacBiet = Convert.ToBoolean(reader["DacBiet"]),
-                                NoiDung = Convert.ToString(reader["NoiDung"])
+                                NoiDung = Convert.ToString(reader["NoiDung"]),
+                                Link = Convert.ToString(reader["Link"])
                             };
 
                             chuyenMucs.Add(chuyenMuc);

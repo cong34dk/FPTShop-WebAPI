@@ -59,7 +59,12 @@ builder.Services.AddScoped<IHoaDonBL, HoaDonBL>();
 builder.Services.AddScoped<IHomeBL, HomeBL>();
 builder.Services.AddScoped<IHomeDA, HomeDA>();
 
+builder.Services.AddCors(p => p.AddPolicy("MyCors", build => { build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader(); }));
+
 var app = builder.Build();
+
+// Thêm middleware CORS 
+app.UseCors("MyCors");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

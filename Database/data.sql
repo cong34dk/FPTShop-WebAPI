@@ -351,6 +351,7 @@ GO
 ALTER TABLE [dbo].[TaiKhoans] CHECK CONSTRAINT [FK_Accounts_TypeAccounts]
 GO
 
+ALTER TABLE ChuyenMucs ADD Link nvarchar(max);
 
 -----Insert data
 
@@ -389,11 +390,20 @@ VALUES
     (3, N'Điện thoại Xiaomi Mi 11', N'xiaomi_mi11.png', 15000000, 14000000, 40, 1, 200, 0);
 
 ----Insert table ChuyenMucs
-INSERT INTO dbo.ChuyenMucs (MaChuyenMucCha, TenChuyenMuc, DacBiet, NoiDung)
+INSERT INTO dbo.ChuyenMucs (MaChuyenMucCha, TenChuyenMuc, DacBiet, NoiDung, Link)
 VALUES
-    (NULL, N'Điện thoại thông minh', 1, N'Chuyên mục về các dòng điện thoại thông minh cao cấp.'),
-    (NULL, N'Phụ kiện điện thoại', 0, N'Chuyên mục về phụ kiện điện thoại như ốp lưng, sạc, tai nghe...'),
-    (1, N'iPhone', 0, N'Chuyên mục về các dòng iPhone.');
+    (NULL, N'Điện thoại', 0, N'./assets/img/category-container/phone.png', N'./iPhone14Pro.html'),
+	(NULL, N'Laptop', 0, N'./assets/img/category-container/laptop.webp', N''),
+	(NULL, N'PC - Lắp ráp', 0, N'./assets/img/category-container/pc.webp', N''),
+	(NULL, N'Máy tính bảng', 0, N'./assets/img/category-container/mtb.webp', N''),
+	(NULL, N'Thiết bị thông minh', 0, N'./assets/img/category-container/smart.webp', N''),
+	(NULL, N'Gia dụng', 0, N'./assets/img/category-container/houseware.webp', N''),
+	(NULL, N'Apple', 0, N'./assets/img/category-container/apple.webp', N''),
+	(NULL, N'Samsung', 0, N'./assets/img/category-container/samsung.webp', N''),
+	(NULL, N'Đồng hồ thông minh', 0, N'./assets/img/category-container/smartwatch.webp', N''),
+	(NULL, N'Phụ kiện', 0, N'./assets/img/category-container/accessories.webp', N''),
+	(NULL, N'Màn hình', 0, N'./assets/img/category-container/screen.webp', N''),
+	(NULL, N'Máy cũ', 0, N'./assets/img/category-container/tcdm.webp', N'')
 
 GO
 
@@ -411,3 +421,17 @@ select * from ChiTietHoaDons
 select * from SanPhams
 
 select * from ChuyenMucs
+
+select * from DKBanTins
+
+select * from QuangCaos
+
+select * from Slide
+
+select * from TinTucs
+
+
+DELETE FROM ChuyenMucs;
+
+DELETE FROM SanPhams WHERE MaChuyenMuc IN (SELECT MaChuyenMuc FROM ChuyenMucs);
+DELETE FROM ChuyenMucs;

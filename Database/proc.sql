@@ -504,4 +504,3 @@ END;
 
 EXEC GetAllChuyenMuc
 
-select * from slide
