@@ -13,7 +13,7 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
   $scope.LoadChuyenMuc = function () {
     $http({
       method: "GET",
-      url: "https://localhost:44321/api/Home/GetAllChuyenMuc",
+      url: "https://localhost:7102/user-gateway/Home/GetAllChuyenMuc",
     }).then(function (response) {
       // Gán dữ liệu từ API vào $scope để hiển thị trong trang HTML
       //   $scope.categories = response.data;
@@ -28,7 +28,7 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
   $scope.LoadSlide = function (){
     $http({
         method: "GET",
-        url: "https://localhost:44321/api/Home/GetAllSlide",
+        url: "https://localhost:7102/user-gateway/Home/GetAllSlide",
     }).then(function (response){
         $scope.images = response.data;
         $scope.currentImage = $scope.images[0].linkAnh;

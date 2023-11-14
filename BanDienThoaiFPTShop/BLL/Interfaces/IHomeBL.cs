@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,10 @@ namespace BLL.Interfaces
     public interface IHomeBL
     {
         List<ChuyenMuc> GetAllChuyenMuc();
+        ChuyenMucModel GetChuyenMucByID(int maChuyenMuc);
         List<Slide> GetAllSlide();
+        SlideModel GetSlideByID(int maAnh);
+        SanPhamModel GetSanPhamByID(int maSanPham);
+        List<SanPhamModel> GetAllSanPhams();
     }
 }

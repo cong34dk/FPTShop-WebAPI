@@ -385,14 +385,14 @@ VALUES (1, GETDATE(), GETDATE(), 1200, 'Tran Van C', 1, '789 Duong DEF, Quan XYZ
 ----Insert table SanPhams
 INSERT INTO [dbo].[SanPhams] (MaChuyenMuc, TenSanPham, AnhDaiDien, Gia, GiaGiam, SoLuong, TrangThai, LuotXem, DacBiet)
 VALUES
-    (1, N'Điện thoại iPhone 12', N'iphone_12.png', 20000000, 19000000, 50, 1, 100, 0),
-    (2, N'Điện thoại Samsung Galaxy S21', N'samsung_s21.png', 18000000, 17000000, 30, 1, 150, 1),
-    (3, N'Điện thoại Xiaomi Mi 11', N'xiaomi_mi11.png', 15000000, 14000000, 40, 1, 200, 0);
+    (31, N'Điện thoại iPhone 12', N'iphone_12.png', 20000000, 19000000, 50, 1, 100, 0),
+    (31, N'Điện thoại Samsung Galaxy S21', N'samsung_s21.png', 18000000, 17000000, 30, 1, 150, 1),
+    (31, N'Điện thoại Xiaomi Mi 11', N'xiaomi_mi11.png', 15000000, 14000000, 40, 1, 200, 0);
 
 ----Insert table ChuyenMucs
 INSERT INTO dbo.ChuyenMucs (MaChuyenMucCha, TenChuyenMuc, DacBiet, NoiDung, Link)
 VALUES
-    (NULL, N'Điện thoại', 0, N'./assets/img/category-container/phone.png', N'./iPhone14Pro.html'),
+    (1, N'Điện thoại', 0, N'./assets/img/category-container/phone.png', N'./iPhone14Pro.html'),
 	(NULL, N'Laptop', 0, N'./assets/img/category-container/laptop.webp', N''),
 	(NULL, N'PC - Lắp ráp', 0, N'./assets/img/category-container/pc.webp', N''),
 	(NULL, N'Máy tính bảng', 0, N'./assets/img/category-container/mtb.webp', N''),

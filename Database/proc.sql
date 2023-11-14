@@ -404,11 +404,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    SELECT *
-    FROM
-        SanPhams
-    WHERE
-        MaSanPham = @MaSanPham;
+    SELECT * FROM SanPhams WHERE MaSanPham = @MaSanPham;
 END
 GO
 
@@ -504,6 +500,19 @@ END;
 
 EXEC GetAllChuyenMuc
 
+------stored procedure 
+CREATE PROCEDURE sp_GetChuyenMucByID
+    @MaChuyenMuc INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT * FROM ChuyenMucs WHERE MaChuyenMuc = @MaChuyenMuc;
+END
+GO
+
+EXEC sp_GetChuyenMucByID 37
+
 -----stored GetAllSlide
 CREATE PROCEDURE GetAllSlide
 AS
@@ -512,3 +521,16 @@ BEGIN
 END;
 
 EXEC GetAllSlide
+
+------stored procedure 
+CREATE PROCEDURE sp_GetSlideByID
+    @MaAnh INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT * FROM Slide WHERE MaAnh = @MaAnh;
+END
+GO
+
+EXEC sp_GetSlideByID 11

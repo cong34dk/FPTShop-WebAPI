@@ -9,7 +9,7 @@
           "Port": 44321
         }
       ],
-      "UpstreamPathTemplate": "/user/Home/{everything}",
+      "UpstreamPathTemplate": "/user-gateway/Home/{everything}",
       "UpstreamHttpMethod": [ "GET" ]   
     }
   ],
