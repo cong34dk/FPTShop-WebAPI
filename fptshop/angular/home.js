@@ -8,6 +8,7 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
   $scope.categories;
   $scope.currentImage;
   $scope.imageIndex = 0;
+  $scope.advertisement;
 
 
   $scope.LoadChuyenMuc = function () {
@@ -35,6 +36,17 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
 
         // Sử dụng $interval để tự động chuyển ảnh sau 3 giây
         $interval($scope.nextImage, 3000);      
+    })
+  }
+
+  $scope.LoadQuangCao = function (){
+    $http({
+      method: "GET",
+      url: "https://localhost:7102/user-gateway/Home/GetAllQuangCaos",
+    }).then(function (response){
+      $scope.advertisements = response.data;
+      $scope.advertisement = $scope.advertisements[0];
+
     })
   }
 
@@ -67,4 +79,5 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
   // Gọi API khi trang được tải
   $scope.LoadChuyenMuc();
   $scope.LoadSlide();
+  $scope.LoadQuangCao();
 });

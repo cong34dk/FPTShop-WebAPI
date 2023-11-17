@@ -104,5 +104,20 @@ namespace API_BanDienThoai_USER.Controllers
             }
         }
 
+        [Route("GetAllQuangCaos")]
+        [HttpGet]
+        public IActionResult GetAllQuangCaos()
+        {
+            try
+            {
+                var quangCaos = _homeBL.GetAllQuangCaos();
+                return Ok(quangCaos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Lỗi khi lấy danh sách quảng cáo: " + ex.Message);
+            }
+        }
+
     }
 }

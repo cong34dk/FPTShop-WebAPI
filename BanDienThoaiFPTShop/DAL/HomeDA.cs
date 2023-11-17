@@ -241,5 +241,43 @@ namespace DAL
             return sanPham;
         }
 
+        public List<QuangCaoDTO> GetAllQuangCaos()
+        {
+            List<QuangCaoDTO> quangCaos = new List<QuangCaoDTO>();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("sp_GetAllQuangCaos", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                QuangCaoDTO quangCao = new QuangCaoDTO
+                                {
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    AnhDaiDien = reader["AnhDaiDien"].ToString(),
+                                    LinkQuangCao = reader["LinkQuangCao"].ToString(),
+                                    MoTa = reader["MoTa"].ToString()
+                                };
+                                quangCaos.Add(quangCao);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách quảng cáo: " + ex.Message);
+            }
+
+            return quangCaos;
+        }
+
     }
 }

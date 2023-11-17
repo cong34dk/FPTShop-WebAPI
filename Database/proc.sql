@@ -585,3 +585,14 @@ BEGIN
 END
 
 EXEC ForgotPassword 'dung@gmail.com'
+
+GO
+----stored
+CREATE PROCEDURE sp_GetAllQuangCaos
+AS
+BEGIN
+    SELECT * FROM QuangCaos;
+END
+GO
+
+EXEC sp_GetAllQuangCaos

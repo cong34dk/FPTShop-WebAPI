@@ -422,6 +422,12 @@ VALUES
 
 GO
 
+----Insert table QuangCaos
+INSERT INTO [dbo].[QuangCaos] (AnhDaiDien, LinkQuangCao, MoTa)
+VALUES
+('./assets/img/banner-sale/laptop.webp', NULL, 'Laptop gaming H7')
+
+
 select * from KhachHangs
 
 select * from LoaiTaiKhoans
@@ -451,4 +457,4 @@ DELETE FROM ChuyenMucs;
 DELETE FROM Slide;
 
 DELETE FROM SanPhams WHERE MaChuyenMuc IN (SELECT MaChuyenMuc FROM ChuyenMucs);
-DELETE FROM ChuyenMucs;
+DELETE FROM QuangCaos;

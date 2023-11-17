@@ -44,5 +44,9 @@ namespace BLL
         {
             return _homeDA.GetAllSanPhams();
         }
+        public List<QuangCaoDTO> GetAllQuangCaos()
+        {
+            return _homeDA.GetAllQuangCaos();
+        }
     }
 }

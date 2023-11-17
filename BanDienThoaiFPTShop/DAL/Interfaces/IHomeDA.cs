@@ -16,5 +16,7 @@ namespace DAL.Interfaces
         SlideModel GetSlideByID(int maAnh);
         SanPhamModel GetSanPhamByID(int maSanPham);
         List<SanPhamModel> GetAllSanPhams();
+        List<QuangCaoDTO> GetAllQuangCaos();
+
     }
 }
