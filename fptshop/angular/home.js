@@ -9,6 +9,7 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
   $scope.currentImage;
   $scope.imageIndex = 0;
   $scope.advertisement;
+  $scope.products;
 
 
   $scope.LoadChuyenMuc = function () {
@@ -44,9 +45,21 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
       method: "GET",
       url: "https://localhost:7102/user-gateway/Home/GetAllQuangCaos",
     }).then(function (response){
-      $scope.advertisements = response.data;
-      $scope.advertisement = $scope.advertisements[0];
+          $scope.advertisements = response.data;
+          $scope.advertisement = $scope.advertisements[0];
 
+    })
+  }
+
+  $scope.LoadSanPham = function (){
+    $http({
+      method: "GET",
+      url: "https://localhost:7102/user-gateway/Home/GetAllSanPhams",
+    }).then(function (response){
+      $scope.products = response.data;
+    })
+    .catch(function(error){
+      console.log('Có lỗi khi lấy dữ liệu từ API', error)
     })
   }
 
@@ -76,8 +89,23 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
     $scope.currentImage = $scope.images[$scope.imageIndex].linkAnh;
   };
 
+
+
   // Gọi API khi trang được tải
   $scope.LoadChuyenMuc();
   $scope.LoadSlide();
   $scope.LoadQuangCao();
+  $scope.LoadSanPham();
+});
+
+app.filter('currencyDisplayFormat', function() {
+  return function(input) {
+      if (!isNaN(input)) {
+          //Nếu input là số hợp lệ(không phải là NaN)
+          // Chuyển đổi số thành chuỗi và loại bỏ dấu phân cách hàng nghìn
+          return parseFloat(input).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      } else {
+          return input;
+      }
+  };
 });

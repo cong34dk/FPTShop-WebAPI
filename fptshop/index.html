@@ -226,12 +226,42 @@
             <a href=""><img ng-src="{{advertisement.anhDaiDien}}" alt="" title="{{advertisement.moTa}}"></a>
         </div>
 
+        <!-- begin hot-promotion__container -->
         <div class="hot-promotion__container center-wrapper mb-24">
             <div class="title">
                 <i class="fa-solid fa-fire"></i>
                 <h2>Khuyến mãi hot</h2>
             </div>
+            <div class="list-products">
+                <!-- Sử dụng AngularJS để lặp qua danh sách sản phẩm từ API -->
+                <div class="list-item" ng-repeat="product in products">
+                    <div class="list-item-img">
+                        <a href="{{product.maSanPham}}"><img ng-src="{{product.anhDaiDien}}" alt=""></a>
+                        <div class="list-item-label">
+                            <!-- Hiển thị các thông tin khác về sản phẩm -->
+                            <span class="badge badge-pay">Trả góp 0%</span>
+                            <span class="badge badge-sale">Giảm {{product.giaGiam | currencyDisplayFormat}}đ</span>
+                        </div>
+                    </div>
+                    <div class="list-item-info">
+                        <h3><a href="{{product.maSanPham}}" title="{{product.tenSanPham}}" class="list-item-info__name">{{product.tenSanPham}}</a></h3>
+                        <div class="list-item-info__price">
+                            <div class="list-item-info__price__current-price">
+                                {{product.gia | currencyDisplayFormat}} <span>đ</span>
+                                <div class="current-price__bar"></div>
+                            </div>
+                            <!-- Hiển thị giá gốc và thời gian còn lại -->
+                            <div class="list-item-info__price__initial-price">
+                                <strike>{{product.gia + product.giaGiam | currencyDisplayFormat}} <span>đ</span></strike>
+                                <div class="time-remaining">
+                                    1 ngày 05:00:07
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- end hot-promotion__container -->
         <div class="banner-sale">
