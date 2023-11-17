@@ -103,5 +103,17 @@ namespace BLL
             return false;
         }
 
+        public bool ChangePassword(string tenTaiKhoan, string matKhauCu, string matKhauMoi)
+        {
+            return _userDA.ChangePassword(tenTaiKhoan, matKhauCu, matKhauMoi);
+
+        }
+
+        public bool ForgotPassword(string email, out string password)
+        {
+            return _userDA.ForgotPassword(email, out password);
+
+        }
+
     }
 }

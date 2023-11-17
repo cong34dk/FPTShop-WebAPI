@@ -353,6 +353,10 @@ GO
 
 ALTER TABLE ChuyenMucs ADD Link nvarchar(max);
 
+ALTER TABLE dbo.TaiKhoans
+ADD CONSTRAINT UQ_TenTaiKhoan UNIQUE (TenTaiKhoan);
+
+
 -----Insert data
 
 ----Insert table LoaiTaiKhoans
@@ -422,7 +426,9 @@ select * from KhachHangs
 
 select * from LoaiTaiKhoans
 
-select* from TaiKhoans
+select * from TaiKhoans
+
+select * from ChiTietTaiKhoans
 
 select * from HoaDons
 

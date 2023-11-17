@@ -212,6 +212,67 @@ namespace DAL
                 }
             }
         }
+
+        public bool ChangePassword(string tenTaiKhoan, string matKhauCu, string matKhauMoi)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("ChangePassword", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add(new SqlParameter("@TenTaiKhoan", tenTaiKhoan));
+                        command.Parameters.Add(new SqlParameter("@MatKhauCu", matKhauCu));
+                        command.Parameters.Add(new SqlParameter("@MatKhauMoi", matKhauMoi));
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool ForgotPassword(string email, out string password)
+        {
+            password = null;
+            try
+            {
+                password = null;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("ForgotPassword", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add(new SqlParameter("@Email", email));
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                password = reader["MatKhau"].ToString();
+                            }
+                        }
+                    }
+                }
+
+                return !string.IsNullOrEmpty(password);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
     }
 }
 

@@ -458,6 +458,7 @@ EXEC sp_GetAllSanPhams;
 
 EXEC sp_GetSanPhamByID 3
 
+GO
 ----Stored lấy về tổng doanh thu
 CREATE PROCEDURE sp_GetTotalRevenue
 AS
@@ -470,6 +471,7 @@ GO
 
 EXEC sp_GetTotalRevenue;
 
+GO
 -------Stored lấy về tổng doanh thu theo khoảng thời gian
 CREATE PROCEDURE sp_GetTotalRevenueByDateRange
     @StartDate DATE,
@@ -485,12 +487,7 @@ GO
 EXEC sp_GetTotalRevenueByDateRange @StartDate = '2023-01-01', @EndDate = '2023-12-31';
 
 
-    SELECT *
-    FROM
-        SanPhams
-    WHERE
-        MaSanPham = 2;
-
+GO
 -----stored getALLDanhMuc
 CREATE PROCEDURE GetAllChuyenMuc
 AS
@@ -498,8 +495,11 @@ BEGIN
     SELECT * FROM ChuyenMucs;
 END;
 
+GO
+
 EXEC GetAllChuyenMuc
 
+GO
 ------stored procedure 
 CREATE PROCEDURE sp_GetChuyenMucByID
     @MaChuyenMuc INT
@@ -513,6 +513,7 @@ GO
 
 EXEC sp_GetChuyenMucByID 37
 
+GO
 -----stored GetAllSlide
 CREATE PROCEDURE GetAllSlide
 AS
@@ -520,8 +521,11 @@ BEGIN
     SELECT * FROM Slide;
 END;
 
+GO
+
 EXEC GetAllSlide
 
+GO
 ------stored procedure 
 CREATE PROCEDURE sp_GetSlideByID
     @MaAnh INT
@@ -534,3 +538,50 @@ END
 GO
 
 EXEC sp_GetSlideByID 11
+
+GO
+
+-------Stored Procedure cho Đổi Mật Khẩu
+GO
+CREATE PROCEDURE ChangePassword
+    @TenTaiKhoan NVARCHAR(50),
+    @MatKhauCu NVARCHAR(50),
+    @MatKhauMoi NVARCHAR(50)
+AS
+BEGIN
+    UPDATE TaiKhoans
+    SET MatKhau = @MatKhauMoi
+    WHERE TenTaiKhoan = @TenTaiKhoan AND MatKhau = @MatKhauCu
+END
+
+GO
+EXEC ChangePassword 'dung', '123', '789'
+
+GO
+-----stored
+GO
+CREATE PROCEDURE ForgotPassword
+    @Email NVARCHAR(100)
+AS
+BEGIN
+    DECLARE @Password NVARCHAR(50);
+
+    -- Tìm mật khẩu cho email tương ứng
+    SELECT @Password = MatKhau
+    FROM TaiKhoans
+    WHERE Email = @Email;
+
+    -- Nếu tìm thấy mật khẩu, trả về mật khẩu đó
+    IF (@Password IS NOT NULL)
+    BEGIN
+        SELECT @Password AS 'MatKhau'; -- Trả về mật khẩu
+    END
+    ELSE
+    BEGIN
+        -- Nếu không tìm thấy mật khẩu cho email đã nhập
+        -- Có thể thêm thông báo hoặc xử lý khác tùy theo yêu cầu
+        SELECT N'Email không tồn tại trong hệ thống.' AS 'Message'; 
+    END
+END
+
+EXEC ForgotPassword 'dung@gmail.com'

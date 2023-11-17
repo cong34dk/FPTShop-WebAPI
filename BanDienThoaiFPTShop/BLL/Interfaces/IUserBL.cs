@@ -15,5 +15,7 @@ namespace BLL.Interfaces
         UserModel AddUser(UserModel userModel);
         UserModel UpdateUser(UserModel userModel);
         bool DeleteUser(int userId);
+        bool ChangePassword(string tenTaiKhoan, string matKhauCu, string matKhauMoi);
+        public bool ForgotPassword(string email, out string password);
     }
 }
