@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">    
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm</title>
+    <link rel="stylesheet" href="../admin/css/cssChung.css">
+    <link rel="stylesheet" href="../admin/css/QLSanPham.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body ng-app="AppBanDienThoai" ng-controller="ProductController">
+    <div class="header">
+        <a href="./admin.html" class="header-logo">ADMIN</a>
+        <i class="fa-solid fa-power-off"></i> <a href="../dangnhap.html">Đăng xuất</a>
+        <p class="header-title">HỆ THỐNG QUẢN TRỊ NỘI DUNG</p>
+    </div>
+    <hr class="hr1">
+    <hr class="hr2">
+    <!-- end header -->
+    <div class="content-container">
+        <div class="sidebar-menu">
+            <div class="sidebar">
+                <ul class="menu">
+                    <li><a class="main-menu" href="#">Trang chủ</a></li>
+
+                    <li>
+                        <a class="main-menu" href="#">Bán hàng <i class="fas fa-caret-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="./QLSanPham.html">Danh sách sản phẩm</a></li>
+                            <li><a href="#">Khách hàng</a></li>
+                            <li><a href="#">Hóa đơn bán</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="main-menu" href="#">Nhập hàng <i class="fas fa-caret-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="./QLNhapHang.html">Hóa đơn nhập</a></li>
+                            <li><a href="#">Hãng sản xuất</a></li>
+                            <li><a href="#">Nhà cung cấp</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="main-menu" href="#">Danh mục<i class="fas fa-caret-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Sản phẩm</a></li>
+                            <li><a href="#">Slide show</a></li>
+                            <li><a href="#">Quảng cáo</a></li>
+                            <li><a href="#">Người dùng</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li><a class="main-menu" href="#">Tài khoản</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <!-- end sidebar-menu -->
+
+        <div class="main-content">
+            <div class="main-content__title">
+                <i class="fa-solid fa-circle-right"></i>
+                <h2>Quản lý sản phẩm</h2>
+            </div>
+        
+            <div class="control-btn">
+                <button class="add-btn">Thêm mới</button>
+                <button class="deleteAll-btn">Xóa tất cả</button>
+            </div>
+        
+            <table class="table">
+                <thead>
+                    <tr class="table-title">
+                        <th>STT</th>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Ảnh đại diện</th>
+                        <th>Giá tiền</th>
+                        <th>Giá giảm</th>
+                        <th>Sửa</th>
+                        <th>Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in products">
+                        <td>{{$index + 1}}</td>
+                        <td>{{product.maSanPham}}</td>
+                        <td>{{product.tenSanPham}}</td>
+                        <td><img ng-src="{{product.anhDaiDien}}" alt="{{product.tenSanPham}}" width="50"></td>
+                        <td>{{product.gia | number:0}}</td>
+                        <td>{{product.giaGiam | number:0}}</td>
+                        <td><button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button></td>
+                        <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Link AngularJS -->
+        <script src="/angular/angular.min.js"></script>
+        <!-- Link Js -->
+        <script src="/angular/QLSanPham.js"></script>
+</body>
+
+</html>

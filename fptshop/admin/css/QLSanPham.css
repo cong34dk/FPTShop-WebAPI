@@ -1,0 +1,93 @@
+.bg-blue {
+    background-color: #33ccff;
+  }
+  
+  /* main-content */
+  .main-content {
+    display: inline-block;
+    width: 1290px;
+    height: 600px;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    margin-left: 20px;
+  }
+  /* end main-content */
+  
+  /* main-content__title */
+  .main-content__title i {
+    font-size: 30px;
+  }
+  .main-content__title h2 {
+    display: inline-block;
+    font-weight: 500;
+  }
+  
+  /* end main-content__title */
+  
+  .control-btn {
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  .add-btn {
+    padding: 5px;
+    cursor: pointer;
+    /* border: none; */
+    background-color: #33ccff;
+  }
+  .deleteAll-btn {
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    background-color: #33ccff;
+  }
+  
+  /* table */
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 30px;
+  }
+  
+  .table-title {
+    background-color: #33ccff;
+  }
+  tbody td:nth-child(3) {
+    text-align: left;
+  }
+  
+  .edit-btn {
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+  }
+  .delete-btn {
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+  }
+  .product-name {
+    text-align: left;
+  }
+  
+  

@@ -1,7 +1,10 @@
-﻿using BLL.Interfaces;
+﻿using API_BanDienThoai_ADMIN.Code;
+using BLL.Interfaces;
 using DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace API_BanDienThoai_ADMIN.Controllers
 {
@@ -10,9 +13,13 @@ namespace API_BanDienThoai_ADMIN.Controllers
     public class SanPhamController : ControllerBase
     {
         private readonly ISanPhamBL _sanPhamBL;
+        private readonly AppSettings _appSettings;
+        private ITools _tools;
 
-        public SanPhamController(ISanPhamBL sanPhamBL)
+        public SanPhamController(IOptions<AppSettings> appSettings, ITools tools, ISanPhamBL sanPhamBL)
         {
+            _appSettings = appSettings.Value;
+            _tools = tools;
             _sanPhamBL = sanPhamBL;
         }
 
@@ -109,6 +116,33 @@ namespace API_BanDienThoai_ADMIN.Controllers
             catch (Exception ex)
             {
                 return BadRequest(new { message = $"Lỗi: {ex.Message}" });
+            }
+        }
+
+        [Route("upload")]
+        [HttpPost]
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            try
+            {
+                if (file.Length > 0)
+                {
+                    string filePath = $"./assets/img/hot-promotion/{file.FileName.Replace("-", "_").Replace("%", "")}";
+                    var fullPath = _tools.CreatePathFile(filePath);
+                    using (var fileStream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(fileStream);
+                    }
+                    return Ok(new { filePath });
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Không thể upload tệp");
             }
         }
     }

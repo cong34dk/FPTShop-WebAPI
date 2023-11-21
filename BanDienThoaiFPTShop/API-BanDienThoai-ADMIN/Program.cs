@@ -8,6 +8,7 @@ using System.Text;
 using DAL.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using API_BanDienThoai_ADMIN.Code;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,8 +59,14 @@ builder.Services.AddScoped<ISanPhamBL, SanPhamBL>();
 builder.Services.AddScoped<ISanPhamDA, SanPhamDA>();
 builder.Services.AddScoped<IBaoCaoAdminBL, BaoCaoAdminBL>();
 builder.Services.AddScoped<IBaoCaoAdminDA, BaoCaoAdminDA>();
+builder.Services.AddScoped<ITools, Tools>();
+
+builder.Services.AddCors(p => p.AddPolicy("MyCors", build => { build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader(); }));
 
 var app = builder.Build();
+
+// Thêm middleware CORS 
+app.UseCors("MyCors");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
