@@ -97,7 +97,7 @@
                         <td>{{product.gia | number:0}}</td>
                         <td>{{product.giaGiam | number:0}}</td>
                         <td><button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button></td>
-                        <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
+                        <td><button class="delete-btn" ng-click="deleteProduct(product.maSanPham)"><i class="fa-solid fa-trash"></i></button></td>
                     </tr>
                 </tbody>
             </table>
