@@ -103,6 +103,23 @@
             </table>
         </div>
 
+        <script>
+            $(document).ready(function () {
+                // Ẩn tất cả các submenu khi tải trang
+                $(".submenu").hide();
+    
+                // Hiển thị submenu khi click vào menu item chứa submenu
+                $(".menu > li").click(function () {
+                    // Ẩn tất cả các submenu khác
+                    $(".submenu").not($(this).children(".submenu")).slideUp();
+    
+                    // Hiển thị hoặc ẩn submenu của menu item hiện tại
+                    $(this).children(".submenu").stop(true, true).slideDown();
+                });
+            });
+    
+        </script>
+        
         <!-- Link AngularJS -->
         <script src="/angular/angular.min.js"></script>
         <!-- Link Js -->
