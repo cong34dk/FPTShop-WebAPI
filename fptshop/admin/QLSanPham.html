@@ -65,16 +65,18 @@
         <!-- end sidebar-menu -->
 
         <div class="main-content">
-            <div class="main-content__title">
-                <i class="fa-solid fa-circle-right"></i>
-                <h2>Quản lý sản phẩm</h2>
+            <div class="wrapper-title-and-control">
+                <div class="main-content__title">
+                    <i class="fa-solid fa-circle-right"></i>
+                    <h2>Quản lý sản phẩm</h2>
+                </div>
+            
+                <div class="control-btn">
+                    <button class="add-btn">Thêm mới</button>
+                    <button class="deleteAll-btn">Xóa tất cả</button>
+                </div>
             </div>
-        
-            <div class="control-btn">
-                <button class="add-btn">Thêm mới</button>
-                <button class="deleteAll-btn">Xóa tất cả</button>
-            </div>
-        
+
             <table class="table">
                 <thead>
                     <tr class="table-title">
@@ -84,11 +86,12 @@
                         <th>Ảnh đại diện</th>
                         <th>Giá tiền</th>
                         <th>Giá giảm</th>
+                        <th>Số lượng</th>
                         <th>Sửa</th>
                         <th>Xóa</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-body">
                     <tr ng-repeat="product in products">
                         <td>{{$index + 1}}</td>
                         <td>{{product.maSanPham}}</td>
@@ -96,29 +99,66 @@
                         <td><img ng-src="{{product.anhDaiDien}}" alt="{{product.tenSanPham}}" width="50"></td>
                         <td>{{product.gia | number:0}}</td>
                         <td>{{product.giaGiam | number:0}}</td>
+                        <td>{{product.soLuong}}</td>
                         <td><button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button></td>
                         <td><button class="delete-btn" ng-click="deleteProduct(product.maSanPham)"><i class="fa-solid fa-trash"></i></button></td>
                     </tr>
                 </tbody>
             </table>
-        </div>
 
-        <script>
-            $(document).ready(function () {
-                // Ẩn tất cả các submenu khi tải trang
-                $(".submenu").hide();
-    
-                // Hiển thị submenu khi click vào menu item chứa submenu
-                $(".menu > li").click(function () {
-                    // Ẩn tất cả các submenu khác
-                    $(".submenu").not($(this).children(".submenu")).slideUp();
-    
-                    // Hiển thị hoặc ẩn submenu của menu item hiện tại
-                    $(this).children(".submenu").stop(true, true).slideDown();
-                });
-            });
-    
-        </script>
+            <!-- Modal thêm sản phẩm -->
+            <div id="modal-add-product" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <table class="table-modal">
+                        <thead>
+                            <tr>
+                                <th colspan="2" style="text-align: center; font-size: 20px;">Thêm sản phẩm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tên sản phẩm</td>
+                                <td><input type="text" ng-model="newProduct.tenSanPham"></td>
+                            </tr>
+                            <tr>
+                                <td>Chuyên mục</td>
+                                <td>
+                                    <select ng-model="newProduct.maChuyenMuc">
+                                        <option value="Điện thoại">Điện thoại</option>
+                                        <option value="Laptop">Laptop</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hình ảnh</td>
+                                <td>
+                                    <img class="hinhDaiDien" ng-src="{{newProduct.anhDaiDien}}" id="anhDaiDienSanPhamThem">
+                                    <input type="file" accept="image/*" onchange="angular.element(this).scope().capNhatAnhSanPham(this.files, 'anhDaiDienSanPhamThem')">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Giá</td>
+                                <td><input type="text" ng-model="newProduct.gia"></td>
+                            </tr>
+                            <tr>
+                                <td>Giảm giá</td>
+                                <td><input type="text" ng-model="newProduct.giaGiam"></td>
+                            </tr>
+                            <tr>
+                                <td>Số lượng</td>
+                                <td><input type="text" ng-model="newProduct.soLuong"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: center;"><button ng-click="addProduct()">Thêm</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+              <!-- End Modal thêm sản phẩm -->
+
+
         
         <!-- Link AngularJS -->
         <script src="/angular/angular.min.js"></script>

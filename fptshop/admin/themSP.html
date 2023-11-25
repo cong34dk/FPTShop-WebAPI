@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <title>Thêm Sản Phẩm</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div ng-controller="productController as ctrl">
+  <button class="btn btn-primary" ng-click="ctrl.showForm = true">Thêm Sản Phẩm</button>
+
+  <div ng-show="ctrl.showForm">
+    <form>
+      <div class="form-group">
+        <label for="maChuyenMuc">Mã Chuyên Mục:</label>
+        <input type="number" class="form-control" id="maChuyenMuc" ng-model="ctrl.newProduct.maChuyenMuc">
+      </div>
+      <div class="form-group">
+        <label for="tenSanPham">Tên Sản Phẩm:</label>
+        <input type="text" class="form-control" id="tenSanPham" ng-model="ctrl.newProduct.tenSanPham">
+      </div>
+      <div class="form-group">
+        <label for="anhDaiDien">Link Ảnh Đại Diện:</label>
+        <input type="text" class="form-control" id="anhDaiDien" ng-model="ctrl.newProduct.anhDaiDien">
+      </div>
+      <div class="form-group">
+        <label for="gia">Giá:</label>
+        <input type="number" class="form-control" id="gia" ng-model="ctrl.newProduct.gia">
+      </div>
+      <div class="form-group">
+        <label for="giaGiam">Giảm Giá:</label>
+        <input type="number" class="form-control" id="giaGiam" ng-model="ctrl.newProduct.giaGiam">
+      </div>
+      <div class="form-group">
+        <label for="soLuong">Số Lượng:</label>
+        <input type="number" class="form-control" id="soLuong" ng-model="ctrl.newProduct.soLuong">
+      </div>
+      <button type="button" class="btn btn-success" ng-click="ctrl.addProduct()">Thêm</button>
+      <button type="button" class="btn btn-default" ng-click="ctrl.showForm = false">Đóng</button>
+    </form>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script>
+    angular.module('myApp', [])
+  .controller('productController', ['$http', function($http) {
+    var vm = this;
+    vm.newProduct = {};
+    vm.showForm = false;
+
+    vm.addProduct = function() {
+        // Các bước khác để chuẩn bị dữ liệu sản phẩm
+        vm.newProduct.TrangThai = true;
+        vm.newProduct.LuotXem = 0;
+      $http({
+        method: 'POST',
+        url: 'https://localhost:44388/api/SanPham/create-SanPham',
+        headers: {
+          'accept': '*/*',
+          'Content-Type': 'application/json'
+        },
+        data: vm.newProduct
+      }).then(function(response) {
+        // Xử lý khi request thành công
+        console.log('Sản phẩm đã được thêm thành công!', response.data);
+        vm.showForm = false; // Ẩn form sau khi thêm sản phẩm
+        vm.newProduct = {}; // Reset form data
+      }, function(error) {
+        // Xử lý khi request thất bại
+        console.error('Có lỗi xảy ra khi thêm sản phẩm.', error);
+      });
+    };
+  }]);
+
+</script>
+
+</body>
+</html>

@@ -1,9 +1,9 @@
 .bg-blue {
     background-color: #33ccff;
   }
-  
   /* main-content */
   .main-content {
+    overflow-y: auto;
     display: inline-block;
     width: 1290px;
     height: 600px;
@@ -12,7 +12,11 @@
     margin-left: 20px;
   }
   /* end main-content */
-  
+  .wrapper-title-and-control{
+    top: 0;
+    position: -webkit-sticky;
+  }
+
   /* main-content__title */
   .main-content__title i {
     font-size: 30px;
@@ -54,11 +58,25 @@
     text-align: center;
   }
   
-  
   .table {
     width: 100%;
     max-width: 100%;
     margin-top: 30px;
+  }
+  .table-body{
+    width: 100%;
+    height: 400px;
+    /* display: block; */
+  }
+  .table thead {
+    position: sticky;
+    top: 0;
+    background-color: #33ccff; /* Màu nền của phần tiêu đề */
+    z-index: 1; /* Đảm bảo phần tiêu đề hiển thị phía trên nội dung cuộn */
+  }
+  .table thead th {
+    position: sticky;
+    top: 0;
   }
   
   .table-title {
@@ -91,3 +109,64 @@
   }
   
   
+  /* CSS cho modal */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền với độ trong suốt */
+  overflow: auto;
+}
+
+/* Nội dung trong modal */
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Điều chỉnh chiều rộng modal */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Nút đóng modal */
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+.close-modal:hover,
+.close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.table-modal{
+  width: 100%;
+}
+
+.table-modal input{
+  width: 400px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+}
+
+.table-modal select{
+  font-size: 18px;
+}
+
+.table-modal button{
+    cursor: pointer;
+    background-color: #23282c;
+    color: #fff;
+    transition-duration: .2s;
+    padding: 5px 10px;
+    border: 3px solid transparent;
+}
