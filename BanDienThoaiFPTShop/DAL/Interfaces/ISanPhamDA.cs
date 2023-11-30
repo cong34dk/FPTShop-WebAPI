@@ -17,5 +17,8 @@ namespace DAL.Interfaces
 
         // Phương thức tìm kiếm sản phẩm với phân trang và trả về tổng số lượng sản phẩm
         List<SanPhamModel> SearchSanPhams(string keyword, int pageIndex, int pageSize, out long total);
+        //Phân trang
+        List<SanPhamModel> GetPagedProducts(int pageNumber, int pageSize, out int totalPages);
+
     }
 }

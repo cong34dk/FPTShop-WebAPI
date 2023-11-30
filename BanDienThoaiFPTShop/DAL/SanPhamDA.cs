@@ -200,5 +200,60 @@ namespace DAL
 
             return sanPhams;
         }
+
+        //Phân trang
+        public List<SanPhamModel> GetPagedProducts(int pageNumber, int pageSize, out int totalPages)
+        {
+            List<SanPhamModel> products = new List<SanPhamModel>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("GetPagedProducts", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PageNumber", pageNumber);
+                    command.Parameters.AddWithValue("@PageSize", pageSize);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            SanPhamModel product = new SanPhamModel
+                            {
+                                MaSanPham = Convert.ToInt32(reader["MaSanPham"]),
+                                MaChuyenMuc = Convert.ToInt32(reader["MaChuyenMuc"]),
+                                TenSanPham = Convert.ToString(reader["TenSanPham"]),
+                                AnhDaiDien = Convert.ToString(reader["AnhDaiDien"]),
+                                Gia = Convert.ToDecimal(reader["Gia"]),
+                                GiaGiam = Convert.ToDecimal(reader["GiaGiam"]),
+                                SoLuong = Convert.ToInt32(reader["SoLuong"]),
+                                TrangThai = Convert.ToBoolean(reader["TrangThai"]),
+                                LuotXem = Convert.ToInt32(reader["LuotXem"]),
+                                DacBiet = Convert.ToBoolean(reader["DacBiet"])
+                            };
+
+                            products.Add(product);
+                        }
+                    }
+
+                    // Tính tổng số trang
+                    totalPages = GetTotalPages(pageSize, connection);
+                }
+            }
+
+            return products;
+        }
+
+        // Phương thức lấy tổng số trang
+        private int GetTotalPages(int pageSize, SqlConnection connection)
+        {
+            // Không cần gọi stored procedure ở đây vì đã thực hiện trong GetPagedProducts
+            // và đã lấy giá trị @TotalPages thông qua OUTPUT parameter
+
+            // Trả về giá trị mặc định 0, bạn có thể muốn xử lý theo ý của mình
+            return 0;
+        }
     }
 }

@@ -234,7 +234,7 @@
             </div>
             <div class="list-products">
                 <!-- Sử dụng AngularJS để lặp qua danh sách sản phẩm từ API -->
-                <div class="list-item" ng-repeat="product in products">
+                <div class="list-item" ng-repeat="product in listSanPham">
                     <div class="list-item-img">
                         <a href="{{product.maSanPham}}"><img ng-src="{{product.anhDaiDien}}" alt=""></a>
                         <div class="list-item-label">
@@ -264,9 +264,24 @@
             </div>
         </div>
         <!-- end hot-promotion__container -->
-        <div class="banner-sale">
-
-        </div>
+            <!-- Phân trang -->
+            <ul class="wrapper" id="pagination">
+                <li class="icon facebook" ng-click="changePage(1)">
+                    <span class="tooltip">1</span>
+                </li>
+                <li class="icon twitter" ng-click="changePage(2)">
+                    <span class="tooltip">2</span>
+                    
+                </li>
+                <li class="icon instagram" ng-click="changePage(3)">
+                    <span class="tooltip">3</span>
+                    
+                </li>
+                <li class="icon four" ng-click="changePage(4)">
+                    <span class="tooltip">4</span>
+                    
+                </li>
+            </ul>
         <!-- end banner-sale -->
         <div class="product-container">
             <div class="promotion__wrapper">

@@ -145,5 +145,30 @@ namespace API_BanDienThoai_ADMIN.Controllers
                 return StatusCode(500, "Không thể upload tệp");
             }
         }
+
+        //Phân trang
+        [Route("phan-trang")]
+        [HttpGet]
+        public ActionResult<IEnumerable<SanPhamModel>> GetPagedProducts(int pageNumber = 1, int pageSize = 20)
+        {
+            try
+            {
+                int totalPages;
+                List<SanPhamModel> products = _sanPhamBL.GetPagedProducts(pageNumber, pageSize, out totalPages);
+
+                // You may want to include the total pages information in the response
+                var result = new
+                {
+                    Products = products,
+                    TotalPages = totalPages
+                };
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Lỗi: {ex.Message}");
+            }
+        }
     }
 }

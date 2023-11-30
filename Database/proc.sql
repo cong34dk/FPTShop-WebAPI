@@ -597,3 +597,33 @@ END
 GO
 
 EXEC sp_GetAllQuangCaos
+
+---------------------------Phân Trang Sản Phẩm---------------------
+CREATE PROCEDURE GetPagedProducts
+    @PageNumber INT,
+    @PageSize INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Offset INT;
+
+    -- Tính toán Offset
+    SET @Offset = (@PageNumber - 1) * @PageSize;
+
+    -- Sử dụng câu truy vấn phân trang với OFFSET và FETCH
+    SELECT *
+    FROM SanPhams
+    ORDER BY MaSanPham
+    OFFSET @Offset ROWS
+    FETCH NEXT @PageSize ROWS ONLY;
+    
+    -- Tính tổng số trang
+    DECLARE @TotalPages INT;
+    SELECT @TotalPages = CEILING(COUNT(*) * 1.0 / @PageSize) FROM SanPhams;
+
+    SELECT @TotalPages AS TotalPages;
+END;
+GO
+EXEC GetPagedProducts @PageNumber = 5, @PageSize = 10;
+GO

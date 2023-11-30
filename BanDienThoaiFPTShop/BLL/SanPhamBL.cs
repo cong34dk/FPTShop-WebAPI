@@ -42,5 +42,11 @@ namespace BLL
         {
             return _sanPhamDA.SearchSanPhams(keyword, pageIndex, pageSize, out total);
         }
+
+        //Phân trang
+        public List<SanPhamModel> GetPagedProducts(int pageNumber, int pageSize, out int totalPages)
+        {
+            return _sanPhamDA.GetPagedProducts(pageNumber, pageSize, out totalPages);
+        }
     }
 }

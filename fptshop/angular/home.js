@@ -3,7 +3,11 @@ var app = angular.module("AppBanDienThoai", []);
 
 // Tạo controller để quản lý logic
 app.controller("HomeController", function ($scope, $http, $window, $interval) {
-
+  // Khai báo biến
+  $scope.imageIndex = 0;
+  $scope.pageNumber = 1;
+  $scope.pageSize = 1;
+  $scope.totalPages = 0;
 
   $scope.categories;
   $scope.currentImage;
@@ -50,18 +54,47 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
 
     })
   }
+  // Load chạy Danh Sach sản phẩm
+  $scope.listSanPham = [];
+  $scope.LoadSanPham = function () {
+      $http({
+          method: 'GET',
+          url: 'https://localhost:44388/api/SanPham/phan-trang',
+          params: { pageNumber: $scope.pageNumber, pageSize: $scope.pageSize }
+      }).then(function (response) {
+          $scope.listSanPham = response.data.products;
+          $scope.totalPages = response.data.totalPages;
+      });
+  };
 
-  $scope.LoadSanPham = function (){
-    $http({
-      method: "GET",
-      url: "https://localhost:7102/user-gateway/Home/GetAllSanPhams",
-    }).then(function (response){
-      $scope.products = response.data;
-    })
-    .catch(function(error){
-      console.log('Có lỗi khi lấy dữ liệu từ API', error)
-    })
-  }
+  // $scope.LoadSanPham();
+
+  // Hàm thay đổi trang
+  $scope.changePage = function (pageNumber) {
+      $scope.pageNumber = pageNumber;
+      $scope.LoadSanPham();
+  };
+
+  // Hàm tạo mảng trang để hiển thị
+  $scope.getPages = function (totalPages) {
+      return new Array(totalPages);
+  };
+  $scope.changePage = function (pageNumber) {
+      $scope.pageNumber = pageNumber;
+      $scope.LoadSanPham();
+  };
+
+  // $scope.LoadSanPham = function (){
+  //   $http({
+  //     method: "GET",
+  //     url: "https://localhost:7102/user-gateway/Home/GetAllSanPhams",
+  //   }).then(function (response){
+  //     $scope.products = response.data;
+  //   })
+  //   .catch(function(error){
+  //     console.log('Có lỗi khi lấy dữ liệu từ API', error)
+  //   })
+  // }
 
   // Hàm chia mảng thành các mảng con với kích thước được chỉ định
   function chunkArray(array, size) {
