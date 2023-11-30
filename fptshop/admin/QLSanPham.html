@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">    
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -70,7 +70,7 @@
                     <i class="fa-solid fa-circle-right"></i>
                     <h2>Quản lý sản phẩm</h2>
                 </div>
-            
+
                 <div class="control-btn">
                     <button class="add-btn">Thêm mới</button>
                     <button class="deleteAll-btn">Xóa tất cả</button>
@@ -100,8 +100,10 @@
                         <td>{{product.gia | number:0}}</td>
                         <td>{{product.giaGiam | number:0}}</td>
                         <td>{{product.soLuong}}</td>
-                        <td><button class="edit-btn" ng-click="openEditModal(product)"><i class="fa-solid fa-pen-to-square"></i></button></td>
-                        <td><button class="delete-btn" ng-click="deleteProduct(product.maSanPham)"><i class="fa-solid fa-trash"></i></button></td>
+                        <td><button class="edit-btn" ng-click="openEditModal(product)"><i
+                                    class="fa-solid fa-pen-to-square"></i></button></td>
+                        <td><button class="delete-btn" ng-click="deleteProduct(product.maSanPham)"><i
+                                    class="fa-solid fa-trash"></i></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -124,22 +126,25 @@
                             <tr>
                                 <td>Chuyên mục</td>
                                 <td>
-                                    <select ng-model="newProduct.maChuyenMuc">
+                                    <select>
                                         <option value="Điện thoại">Điện thoại</option>
                                         <option value="Laptop">Laptop</option>
                                     </select>
                                 </td>
                             </tr>
+
                             <tr>
                                 <td>Hình ảnh</td>
                                 <td>
-                                    <img class="hinhDaiDien" ng-src="{{newProduct.anhDaiDien}}" id="anhDaiDienSanPhamThem">
-                                    <input type="file" accept="image/*" onchange="angular.element(this).scope().capNhatAnhSanPham(this.files, 'anhDaiDienSanPhamThem')">
+                                    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+                                    <img id="previewImage" src="" alt="Preview"
+                                        style="max-width: 200px; display: none;">
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Giá</td>
-                                <td><input type="text" ng-model="newProduct.gia"></td>
+
+                            </tr>
+                            <td>Giá</td>
+                            <td><input type="text" ng-model="newProduct.gia"></td>
                             </tr>
                             <tr>
                                 <td>Giảm giá</td>
@@ -150,16 +155,18 @@
                                 <td><input type="text" ng-model="newProduct.soLuong"></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: center;"><button ng-click="addProduct()">Thêm</button></td>
+                                <td colspan="2" style="text-align: center;">
+                                    <button ng-click="addProduct()">Thêm</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-              <!-- End Modal thêm sản phẩm -->
+            <!-- End Modal thêm sản phẩm -->
 
-              <!-- Begin Modal Sửa sản phẩm -->
-              <div id="modal-edit-product" class="modal" ng-show="isEditModalOpen">
+            <!-- Begin Modal Sửa sản phẩm -->
+            <div id="modal-edit-product" class="modal" ng-show="isEditModalOpen">
                 <div class="modal-content">
                     <span class="close-modal" ng-click="closeEditModal()">&times;</span>
                     <table class="table-modal">
@@ -185,8 +192,10 @@
                             <tr>
                                 <td>Hình ảnh</td>
                                 <td>
-                                    <img class="hinhDaiDien" ng-src="{{editedProduct.anhDaiDien}}" id="anhDaiDienSanPhamThem">
-                                    <input type="file" accept="image/*" onchange="angular.element(this).scope().capNhatAnhSanPham(this.files, 'anhDaiDienSanPhamThem')">
+                                    <img class="hinhDaiDien" ng-src="{{editedProduct.anhDaiDien}}"
+                                        id="anhDaiDienSanPhamThem">
+                                    <input type="file" accept="image/*"
+                                        onchange="angular.element(this).scope().capNhatAnhSanPham(this.files, 'anhDaiDienSanPhamThem')">
                                 </td>
                             </tr>
                             <tr>
@@ -202,32 +211,33 @@
                                 <td><input type="text" ng-model="editedProduct.soLuong"></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: center;"><button ng-click="saveEditedProduct()">Lưu</button></td>
+                                <td colspan="2" style="text-align: center;"><button
+                                        ng-click="saveEditedProduct()">Lưu</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                </div>
+            </div>
             <!-- End Modal Sửa sản phẩm -->
 
-        <script>
-            $(document).ready(function () {
-                // Ẩn tất cả các submenu khi tải trang
-                $(".submenu").hide();
-    
-                // Hiển thị submenu khi click vào menu item chứa submenu
-                $(".menu > li").click(function () {
-                    // Ẩn tất cả các submenu khác
-                    $(".submenu").not($(this).children(".submenu")).slideUp();
-    
-                    // Hiển thị hoặc ẩn submenu của menu item hiện tại
-                    $(this).children(".submenu").stop(true, true).slideDown();
-                });
-            });
-    
-        </script>
+            <script>
+                $(document).ready(function () {
+                    // Ẩn tất cả các submenu khi tải trang
+                    $(".submenu").hide();
 
-        <script>
+                    // Hiển thị submenu khi click vào menu item chứa submenu
+                    $(".menu > li").click(function () {
+                        // Ẩn tất cả các submenu khác
+                        $(".submenu").not($(this).children(".submenu")).slideUp();
+
+                        // Hiển thị hoặc ẩn submenu của menu item hiện tại
+                        $(this).children(".submenu").stop(true, true).slideDown();
+                    });
+                });
+
+            </script>
+
+            <script>
                 // Lấy thẻ modal và nút mở modal
                 var modalAdd = document.getElementById("modal-add-product");
                 var addBtn = document.querySelector(".add-btn");
@@ -236,40 +246,57 @@
                 var closeBtn = document.getElementsByClassName("close-modal")[0];
 
                 // Khi người dùng bấm vào nút "Thêm mới", hiển thị modal
-                addBtn.onclick = function() {
-                modalAdd.style.display = "block";
+                addBtn.onclick = function () {
+                    modalAdd.style.display = "block";
                 };
 
                 // Khi người dùng bấm vào nút đóng, ẩn modal
-                closeBtn.onclick = function() {
-                modalAdd.style.display = "none";
+                closeBtn.onclick = function () {
+                    modalAdd.style.display = "none";
 
                 };
 
                 // Khi người dùng bấm vào bất kỳ đâu ngoài modal, ẩn modal
-                window.onclick = function(event) {
-                if (event.target == modalAdd) {
-                    modalAdd.style.display = "none";
-                }
+                window.onclick = function (event) {
+                    if (event.target == modalAdd) {
+                        modalAdd.style.display = "none";
+                    }
                 };
 
                 // Xử lý khi form được submit
-                document.getElementById("productForm").addEventListener("submit", function(event) {
-                // Ngăn chặn việc submit mặc định của form
-                event.preventDefault();
-                
-                // Đoạn code xử lý thông tin sản phẩm mới ở đây (có thể gửi đi thông tin sản phẩm, hiển thị thông báo, vv.)
-                
-                // Sau khi xử lý xong, ẩn modal
-                modalAdd.style.display = "none";
+                document.getElementById("productForm").addEventListener("submit", function (event) {
+                    // Ngăn chặn việc submit mặc định của form
+                    event.preventDefault();
+
+                    // Đoạn code xử lý thông tin sản phẩm mới ở đây (có thể gửi đi thông tin sản phẩm, hiển thị thông báo, vv.)
+
+                    // Sau khi xử lý xong, ẩn modal
+                    modalAdd.style.display = "none";
                 });
 
-        </script>
-        
-        <!-- Link AngularJS -->
-        <script src="/angular/angular.min.js"></script>
-        <!-- Link Js -->
-        <script src="/angular/QLSanPham.js"></script>
+            </script>
+
+            <script>
+                function previewImage(event) {
+                    var input = event.target;
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            var preview = document.getElementById('previewImage');
+                            preview.src = e.target.result;
+                            preview.style.display = 'block';
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+            </script>
+            <!-- Link AngularJS -->
+            <script src="/angular/angular.min.js"></script>
+            <!-- Link Js -->
+            <script src="/angular/QLSanPham.js"></script>
 </body>
 
 </html>

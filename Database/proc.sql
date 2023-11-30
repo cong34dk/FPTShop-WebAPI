@@ -67,6 +67,7 @@ BEGIN
 	WHERE Id=@Id;
 END;
 GO
+
 --Tìm kiếm trang khách hàng
 CREATE PROCEDURE sp_khach_search (@page_index  INT, 
                                        @page_size   INT,

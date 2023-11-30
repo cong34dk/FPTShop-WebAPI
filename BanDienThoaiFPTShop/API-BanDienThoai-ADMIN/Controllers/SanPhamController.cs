@@ -127,7 +127,7 @@ namespace API_BanDienThoai_ADMIN.Controllers
             {
                 if (file.Length > 0)
                 {
-                    string filePath = $"./assets/img/hot-promotion/{file.FileName.Replace("-", "_").Replace("%", "")}";
+                    string filePath = $"/upload/{file.FileName.Replace("-", "_").Replace("%", "")}";
                     var fullPath = _tools.CreatePathFile(filePath);
                     using (var fileStream = new FileStream(fullPath, FileMode.Create))
                     {
