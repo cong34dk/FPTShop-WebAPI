@@ -16,6 +16,21 @@ var app = angular.module('AppBanDienThoai', []);
             "luotXem": 0,
             "dacBiet": false
         };
+        
+        // Biến lưu trữ thông tin sản phẩm sửa
+        $scope.editedProduct = {
+            "maSanPham": 0,
+            "maChuyenMuc": 31,
+            "tenSanPham": "",
+            "anhDaiDien": "",
+            "gia": null,
+            "giaGiam": null,
+            "soLuong": null,
+            "trangThai": true,
+            "luotXem": 0,
+            "dacBiet": false
+        }; 
+
 
         // Hàm lấy danh sách sản phẩm
         $scope.LoadSanPham = function (){
@@ -47,94 +62,9 @@ var app = angular.module('AppBanDienThoai', []);
         };
 
         //Hàm thêm sản phẩm
-        // $scope.addProduct = function() {
+        $scope.addProduct = function(event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của form (tải lại trang)
 
-        //     $http.post('https://localhost:44388/api/SanPham/create-SanPham', $scope.newProduct)
-        //         .then(function(response) {
-        //             // Xử lý kết quả sau khi thêm sản phẩm thành công
-        //             console.log('Sản phẩm đã được thêm:', response.data.filePath);
-
-        //             // Cập nhật đường dẫn ảnh từ API response vào cơ sở dữ liệu
-        //             $scope.newProduct.anhDaiDien = response.data.filePath;
-
-        //             // Đặt logic xử lý khi thêm sản phẩm thành công
-        //             alert('Sản phẩm đã được thêm thành công');
-        //             $scope.LoadSanPham();
-        //             $scope.newProduct = {};
-        //         })
-        //         .catch(function(error) {
-        //             // Xử lý khi có lỗi trong quá trình thêm sản phẩm
-        //             console.error('Lỗi khi thêm sản phẩm:', error);
-        //             // Đặt logic xử lý khi có lỗi
-        //             alert('Lỗi khi thêm sản phẩm');
-        //         });
-        // };
-
-
-        //Hàm sửa sản phẩm
-        $scope.openEditModal = function (product) {
-            $scope.isEditModalOpen = true;
-            $scope.editedProduct = angular.copy(product); // Copy thông tin sản phẩm cần sửa vào biến editedProduct
-        };
-
-        $scope.closeEditModal = function () {
-            $scope.isEditModalOpen = false;
-        };
-
-        $scope.saveEditedProduct = function () {
-            // Sử dụng $scope.editedProduct để lấy thông tin sản phẩm đã chỉnh sửa
-            // Sau khi gọi API xong, đóng modal sửa sản phẩm
-            $http.put('https://localhost:44388/api/SanPham/update-SanPham', $scope.editedProduct)
-                .then(function (response) {
-                    // Xử lý kết quả từ API (response)
-                    console.log(response.data.message); // Log message từ server
-                    alert('Sửa sản phẩm thành công')
-                    $scope.LoadSanPham()
-                    $scope.isEditModalOpen = false; // Đóng modal sau khi cập nhật thành công
-                })
-                .catch(function (error) {
-                    // Xử lý lỗi (nếu có)
-                    console.error('Lỗi khi đang sửa sản phẩm:', error);
-                });
-        };
-        
-        $scope.capNhatAnhSanPham = function(files, imgId) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById(imgId + 'Preview').src = e.target.result;
-            };
-            reader.readAsDataURL(files[0]);
-            // Gán đường dẫn ảnh đã chọn vào $scope.newProduct.anhDaiDien
-            $scope.newProduct.anhDaiDien = files[0].name;
-        };
-        
-        $scope.uploadFile = function (file, event) {
-            event.preventDefault();
-            var formData = new FormData();
-            formData.append('file', file);
-    
-            $http({
-                method: 'POST',
-                url: 'https://localhost:44388/api/SanPham/upload',
-                headers: {
-                    'Content-Type': undefined 
-                },
-                data: formData
-            }).then(function (response) {
-                console.log('File uploaded:', response.data.filePath);
-
-                // Hiển thị ảnh được chọn trong modal thêm sản phẩm
-                 document.getElementById('anhDaiDienSanPhamThemPreview').src = response.data.filePath;
-
-                 // Cập nhật đường dẫn ảnh trong $scope.newProduct.anhDaiDien sau khi upload thành công
-                $scope.newProduct.anhDaiDien = response.data.filePath; 
-            }).catch(function (error) {
-                console.error('Error uploading file:', error);
-            });
-        };
-
-
-        $scope.addProduct = function() {
             var formData = new FormData();
             formData.append('file', document.getElementById('imageInput').files[0]);
             formData.append('tenSanPham', $scope.newProduct.tenSanPham);
@@ -147,16 +77,19 @@ var app = angular.module('AppBanDienThoai', []);
                 headers: { 'Content-Type': undefined } // Đảm bảo định dạng form data
             }).then(function(response) {
                 // Lấy đường dẫn tệp ảnh từ response
+                console.log("Đường dẫn ảnh: "+ response.data.filePath)
                 var imagePath = response.data.filePath;
                 
                 // Tiến hành thêm sản phẩm với đường dẫn ảnh vào cơ sở dữ liệu
-                $scope.newProduct.anhDaiDien = "/assets/img/hot-promotion/" + imagePath;
+                $scope.newProduct.anhDaiDien = "/assets/img/hot-promotion" + imagePath;
         
                 $http.post('https://localhost:44388/api/SanPham/create-SanPham', $scope.newProduct)
                     .then(function(response) {
                         console.log('Sản phẩm đã được thêm:', response.data);
                         alert('Sản phẩm đã được thêm thành công');
                         $scope.LoadSanPham();
+
+                        //Xóa mọi data hiển thị trong modal thêm
                         $scope.newProduct = {};
                         document.getElementById('previewImage').src = '';
                         document.getElementById('previewImage').style.display = 'none';
@@ -170,8 +103,78 @@ var app = angular.module('AppBanDienThoai', []);
                 alert('Lỗi khi upload ảnh');
             });
         };
-        
-        
+
+
+        //Hàm sửa sản phẩm
+        $scope.openEditModal = function (product) {
+            $scope.isEditModalOpen = true;
+            $scope.editedProduct = angular.copy(product); // Copy thông tin sản phẩm cần sửa vào biến editedProduct
+            // Hiển thị ảnh sản phẩm cần sửa trên modal
+            document.getElementById('previewEditImage').src = $scope.editedProduct.anhDaiDien;
+        };
+
+        $scope.closeEditModal = function () {
+            $scope.isEditModalOpen = false;
+        };
+
+        // $scope.saveEditedProduct = function () {
+        //     // Sử dụng $scope.editedProduct để lấy thông tin sản phẩm đã chỉnh sửa
+        //     // Sau khi gọi API xong, đóng modal sửa sản phẩm
+        //     $http.put('https://localhost:44388/api/SanPham/update-SanPham', $scope.editedProduct)
+        //         .then(function (response) {
+        //             // Xử lý kết quả từ API (response)
+        //             console.log(response.data.message); // Log message từ server
+        //             alert('Sửa sản phẩm thành công')
+        //             $scope.LoadSanPham()
+        //             $scope.isEditModalOpen = false; // Đóng modal sau khi cập nhật thành công
+        //         })
+        //         .catch(function (error) {
+        //             // Xử lý lỗi (nếu có)
+        //             console.error('Lỗi khi đang sửa sản phẩm:', error);
+        //         });
+        // };
+
+
+
+            $scope.saveEditedProduct = function() {
+                // Thực hiện upload ảnh mới nếu có
+                var editFormData = new FormData();
+                editFormData.append('file', document.getElementById('editImageInput').files[0]);
+                editFormData.append('tenSanPham', $scope.editedProduct.tenSanPham);
+                editFormData.append('maChuyenMuc', $scope.editedProduct.maChuyenMuc);
+                editFormData.append('gia', $scope.editedProduct.gia);
+                editFormData.append('giaGiam', $scope.editedProduct.giaGiam);
+                editFormData.append('soLuong', $scope.editedProduct.soLuong);
+            
+                $http.post('https://localhost:44388/api/SanPham/upload', editFormData, {
+                    headers: { 'Content-Type': undefined }
+                }).then(function(response) {
+                    console.log("Đường dẫn ảnh: " + response.data.filePath);
+                    var editedImagePath = response.data.filePath;
+            
+                    // Cập nhật đường dẫn ảnh mới vào thông tin sản phẩm cần sửa
+                    $scope.editedProduct.anhDaiDien = "/assets/img/hot-promotion" + editedImagePath;
+            
+                    // Gọi API để cập nhật thông tin sản phẩm
+                    $http.put('https://localhost:44388/api/SanPham/update-SanPham', $scope.editedProduct)
+                        .then(function(response) {
+                            console.log('Thông tin sản phẩm đã được cập nhật:', response.data);
+                            alert('Thông tin sản phẩm đã được cập nhật thành công');
+                            $scope.LoadSanPham();
+            
+                            // Đóng modal sau khi cập nhật thành công
+                            document.getElementById('modal-edit-product').style.display = 'none';
+                        })
+                        .catch(function(error) {
+                            console.error('Lỗi khi cập nhật sản phẩm:', error);
+                            alert('Lỗi khi cập nhật sản phẩm');
+                        });
+                }).catch(function(error) {
+                    console.error('Lỗi khi upload ảnh:', error);
+                    alert('Lỗi khi upload ảnh');
+                });
+            };
+            
           // Gọi API khi trang được tải
           $scope.LoadSanPham()
 

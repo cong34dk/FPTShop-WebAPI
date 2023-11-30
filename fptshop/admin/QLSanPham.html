@@ -156,7 +156,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align: center;">
-                                    <button ng-click="addProduct()">Thêm</button>
+                                    <button ng-click="addProduct($event)">Thêm</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -183,7 +183,7 @@
                             <tr>
                                 <td>Chuyên mục</td>
                                 <td>
-                                    <select ng-model="editedProduct.maChuyenMuc">
+                                    <select>
                                         <option value="Điện thoại">Điện thoại</option>
                                         <option value="Laptop">Laptop</option>
                                     </select>
@@ -192,10 +192,9 @@
                             <tr>
                                 <td>Hình ảnh</td>
                                 <td>
-                                    <img class="hinhDaiDien" ng-src="{{editedProduct.anhDaiDien}}"
-                                        id="anhDaiDienSanPhamThem">
-                                    <input type="file" accept="image/*"
-                                        onchange="angular.element(this).scope().capNhatAnhSanPham(this.files, 'anhDaiDienSanPhamThem')">
+                                    <input type="file" id="editImageInput" accept="image/*"
+                                        onchange="previewEditImage(event)">
+                                    <img id="previewEditImage" src="" alt="Preview" style="max-width: 200px;">
                                 </td>
                             </tr>
                             <tr>
@@ -293,6 +292,25 @@
                 }
 
             </script>
+
+            <script>
+                function previewEditImage(event) {
+                    var input = event.target;
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            var preview = document.getElementById('previewEditImage');
+                            preview.src = e.target.result;
+                            preview.style.display = 'block';
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+            </script>
+
             <!-- Link AngularJS -->
             <script src="/angular/angular.min.js"></script>
             <!-- Link Js -->
