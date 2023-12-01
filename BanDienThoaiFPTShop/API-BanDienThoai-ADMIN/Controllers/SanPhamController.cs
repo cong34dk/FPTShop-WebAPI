@@ -149,14 +149,13 @@ namespace API_BanDienThoai_ADMIN.Controllers
         //Phân trang
         [Route("phan-trang")]
         [HttpGet]
-        public ActionResult<IEnumerable<SanPhamModel>> GetPagedProducts(int pageNumber = 1, int pageSize = 20)
+        public ActionResult<IEnumerable<SanPhamModel>> GetPagedProducts(int pageNumber = 1, int pageSize = 12)
         {
             try
             {
                 int totalPages;
                 List<SanPhamModel> products = _sanPhamBL.GetPagedProducts(pageNumber, pageSize, out totalPages);
 
-                // You may want to include the total pages information in the response
                 var result = new
                 {
                     Products = products,

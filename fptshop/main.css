@@ -880,8 +880,8 @@ ul li {
   background-color: transparent;
 }
 
-/* Css Phân trang */
-.wrapper {
+/* CSS Phân trang  */
+.wrapper-phantrang {
   display: inline-flex;
   list-style: none;
   height: 120px;
@@ -891,7 +891,7 @@ ul li {
   justify-content: center;
 }
 
-.wrapper .icon {
+.wrapper-phantrang .icon {
   position: relative;
   background: #fff;
   border-radius: 50%;
@@ -908,68 +908,10 @@ ul li {
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.wrapper .tooltip {
-  position: absolute;
-  top: 0;
-  font-size: 14px;
-  background: #fff;
-  color: #fff;
-  padding: 5px 8px;
-  border-radius: 5px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+.wrapper-phantrang .icon span {
+  color: #000;
 }
 
-.wrapper .tooltip::before {
-  position: absolute;
-  content: "";
-  height: 8px;
-  width: 8px;
-  background: #fff;
-  bottom: -3px;
-  left: 50%;
-  transform: translate(-50%) rotate(45deg);
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.wrapper .icon:hover .tooltip {
-  top: -45px;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.wrapper .icon:hover span,
-.wrapper .icon:hover .tooltip {
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-}
-
-.wrapper .facebook:hover,
-.wrapper .facebook:hover .tooltip,
-.wrapper .facebook:hover .tooltip::before {
-  background: #1877F2;
-  color: #fff;
-}
-
-.wrapper .twitter:hover,
-.wrapper .twitter:hover .tooltip,
-.wrapper .twitter:hover .tooltip::before {
-  background: #1DA1F2;
-  color: #fff;
-}
-
-.wrapper .instagram:hover,
-.wrapper .instagram:hover .tooltip,
-.wrapper .instagram:hover .tooltip::before {
-  background: #E4405F;
-  color: #fff;
-}
-
-.wrapper .four:hover,
-.wrapper .four:hover .tooltip,
-.wrapper .four:hover .tooltip::before {
-  background: rgb(64, 228, 75);
-  color: #fff;
+.wrapper-phantrang .icon:hover{
+  background-color: rgb(15, 216, 15);
 }

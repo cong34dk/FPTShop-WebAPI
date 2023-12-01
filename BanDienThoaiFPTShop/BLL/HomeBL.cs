@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using DAL;
 using DAL.Interfaces;
 using DAL.Models;
 using DTO;
@@ -47,6 +48,11 @@ namespace BLL
         public List<QuangCaoDTO> GetAllQuangCaos()
         {
             return _homeDA.GetAllQuangCaos();
+        }
+        //Phân trang
+        public List<SanPhamModel> GetPagedProducts(int pageNumber, int pageSize, out int totalPages)
+        {
+            return _homeDA.GetPagedProducts(pageNumber, pageSize, out totalPages);
         }
     }
 }

@@ -17,5 +17,9 @@ namespace BLL.Interfaces
         SanPhamModel GetSanPhamByID(int maSanPham);
         List<SanPhamModel> GetAllSanPhams();
         List<QuangCaoDTO> GetAllQuangCaos();
+
+        //Phân trang
+        List<SanPhamModel> GetPagedProducts(int pageNumber, int pageSize, out int totalPages);
+
     }
 }

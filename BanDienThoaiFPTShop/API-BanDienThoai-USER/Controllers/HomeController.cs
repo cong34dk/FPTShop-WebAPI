@@ -119,5 +119,28 @@ namespace API_BanDienThoai_USER.Controllers
             }
         }
 
+        //Phân trang
+        [Route("phan-trang")]
+        [HttpGet]
+        public ActionResult<IEnumerable<SanPhamModel>> GetPagedProducts(int pageNumber = 1, int pageSize = 12)
+        {
+            try
+            {
+                int totalPages;
+                List<SanPhamModel> products = _homeBL.GetPagedProducts(pageNumber, pageSize, out totalPages);
+
+                var result = new
+                {
+                    Products = products,
+                    TotalPages = totalPages
+                };
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Lỗi: {ex.Message}");
+            }
+        }
     }
 }

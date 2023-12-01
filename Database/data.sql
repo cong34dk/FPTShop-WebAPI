@@ -392,7 +392,34 @@ VALUES
     (31, N'iPhone 14 Pro 128GB', N'/assets/img/hot-promotion/iphone.webp', 25490000, 5500000, 50, 1, 100, 0),
     (31, N'Samsung Galaxy S23 Ultra 5G 256GB', N'/assets/img/hot-promotion/samsung-galaxy-s23-ultra.webp', 26990000, 5000000, 30, 1, 150, 0),
     (31, N'Xiaomi Redmi 10 2022 4GB-128GB', N'/assets/img/hot-promotion/xiaomi-redmi.webp', 3590000, 700000, 40, 1, 200, 0),
-	(31, N'Xiaomi Redmi 12C 4GB - 64GB', N'/assets/img/hot-promotion/xiaomi-redmi-12c-dd.webp', 3190000, 400000, 70, 1, 300, 0);
+	(31, N'Xiaomi Redmi 12C 4GB - 64GB', N'/assets/img/hot-promotion/xiaomi-redmi-12c-dd.webp', 3190000, 400000, 70, 1, 300, 0),
+	
+	--Insert thêm
+	(31, N'iPhone 14 Pro 128GB', N'/assets/img/hot-promotion/honor-90-lite-den-dd-moi.webp', 25490000, 5500000, 50, 1, 100, 0),
+    (31, N'Samsung Galaxy S23 Ultra 5G 256GB', N'/assets/img/hot-promotion/hornor-x8a-dd-doimoi.webp', 26990000, 5000000, 30, 1, 150, 0),
+    (31, N'Xiaomi Redmi 10 2022 4GB-128GB', N'/assets/img/hot-promotion/ip-15-pro-max-dd-bh-2-nam.webp', 3590000, 700000, 40, 1, 200, 0),
+	(31, N'Xiaomi Redmi 12C 4GB - 64GB', N'/assets/img/hot-promotion/oppo-a18-dd-doimoi.webp', 3190000, 400000, 70, 1, 300, 0),
+	(31, N'iPhone 14 Pro 128GB', N'/assets/img/hot-promotion/oppo-a58-dd-doimoi.webp', 25490000, 5500000, 50, 1, 100, 0),
+    (31, N'Samsung Galaxy S23 Ultra 5G 256GB', N'/assets/img/hot-promotion/oppo-reno8-t-4g-dd.webp', 26990000, 5000000, 30, 1, 150, 0),
+    (31, N'Xiaomi Redmi 10 2022 4GB-128GB', N'/assets/img/hot-promotion/realme-11-4g-dd.webp', 3590000, 700000, 40, 1, 200, 0),
+	(31, N'Xiaomi Redmi 12C 4GB - 64GB', N'/assets/img/hot-promotion/realme-11-pro-5g-dd.webp', 3190000, 400000, 70, 1, 300, 0),
+	(31, N'iPhone 14 Pro 128GB', N'/assets/img/hot-promotion/samsung-galaxy-a34-dd.webp', 25490000, 5500000, 50, 1, 100, 0),
+    (31, N'Samsung Galaxy S23 Ultra 5G 256GB', N'/assets/img/hot-promotion/samsung-galaxy-z-flip4-tim-dd-tragop.webp', 26990000, 5000000, 30, 1, 150, 0),
+    (31, N'Xiaomi Redmi 10 2022 4GB-128GB', N'/assets/img/hot-promotion/xiaomi-redmi.webp', 3590000, 700000, 40, 1, 200, 0),
+	(31, N'Xiaomi Redmi 12C 4GB - 64GB', N'/assets/img/hot-promotion/xiaomi-redmi-12c-dd.webp', 3190000, 400000, 70, 1, 300, 0),
+	(31, N'iPhone 14 Pro 128GB', N'/assets/img/hot-promotion/iphone.webp', 25490000, 5500000, 50, 1, 100, 0),
+    (31, N'Samsung Galaxy S23 Ultra 5G 256GB', N'/assets/img/hot-promotion/samsung-galaxy-s23-ultra.webp', 26990000, 5000000, 30, 1, 150, 0),
+    (31, N'Xiaomi Redmi 10 2022 4GB-128GB', N'/assets/img/hot-promotion/xiaomi-redmi.webp', 3590000, 700000, 40, 1, 200, 0),
+	(31, N'Xiaomi Redmi 12C 4GB - 64GB', N'/assets/img/hot-promotion/xiaomi-redmi-12c-dd.webp', 3190000, 400000, 70, 1, 300, 0),
+	(31, N'Samsung Galaxy S23 Ultra 5G 256GB', N'/assets/img/hot-promotion/oppo-reno8-t-4g-dd.webp', 26990000, 5000000, 30, 1, 150, 0),
+    (31, N'Xiaomi Redmi 10 2022 4GB-128GB', N'/assets/img/hot-promotion/realme-11-4g-dd.webp', 3590000, 700000, 40, 1, 200, 0),
+	(31, N'Xiaomi Redmi 12C 4GB - 64GB', N'/assets/img/hot-promotion/realme-11-pro-5g-dd.webp', 3190000, 400000, 70, 1, 300, 0),
+	(31, N'iPhone 14 Pro 128GB', N'/assets/img/hot-promotion/samsung-galaxy-a34-dd.webp', 25490000, 5500000, 50, 1, 100, 0),
+	(31, N'Xiaomi Redmi 12C 4GB - 64GB', N'/assets/img/hot-promotion/oppo-a18-dd-doimoi.webp', 3190000, 400000, 70, 1, 300, 0),
+	(31, N'iPhone 14 Pro 128GB', N'/assets/img/hot-promotion/oppo-a58-dd-doimoi.webp', 25490000, 5500000, 50, 1, 100, 0),
+    (31, N'Samsung Galaxy S23 Ultra 5G 256GB', N'/assets/img/hot-promotion/oppo-reno8-t-4g-dd.webp', 26990000, 5000000, 30, 1, 150, 0)
+
+
 
 ----Insert table ChuyenMucs
 INSERT INTO dbo.ChuyenMucs (MaChuyenMucCha, TenChuyenMuc, DacBiet, NoiDung, Link)

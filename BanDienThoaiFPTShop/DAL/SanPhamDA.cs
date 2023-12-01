@@ -252,7 +252,6 @@ namespace DAL
             // Không cần gọi stored procedure ở đây vì đã thực hiện trong GetPagedProducts
             // và đã lấy giá trị @TotalPages thông qua OUTPUT parameter
 
-            // Trả về giá trị mặc định 0, bạn có thể muốn xử lý theo ý của mình
             return 0;
         }
     }

@@ -609,6 +609,7 @@ BEGIN
     DECLARE @Offset INT;
 
     -- Tính toán Offset
+	--trang đầu tiên có vị trí bắt đầu từ 0
     SET @Offset = (@PageNumber - 1) * @PageSize;
 
     -- Sử dụng câu truy vấn phân trang với OFFSET và FETCH
@@ -625,5 +626,5 @@ BEGIN
     SELECT @TotalPages AS TotalPages;
 END;
 GO
-EXEC GetPagedProducts @PageNumber = 5, @PageSize = 10;
+EXEC GetPagedProducts @PageNumber = 1, @PageSize = 10;
 GO

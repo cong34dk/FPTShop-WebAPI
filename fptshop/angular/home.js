@@ -4,9 +4,8 @@ var app = angular.module("AppBanDienThoai", []);
 // Tạo controller để quản lý logic
 app.controller("HomeController", function ($scope, $http, $window, $interval) {
   // Khai báo biến
-  $scope.imageIndex = 0;
   $scope.pageNumber = 1;
-  $scope.pageSize = 1;
+  $scope.pageSize = 8;
   $scope.totalPages = 0;
 
   $scope.categories;
@@ -79,10 +78,7 @@ app.controller("HomeController", function ($scope, $http, $window, $interval) {
   $scope.getPages = function (totalPages) {
       return new Array(totalPages);
   };
-  $scope.changePage = function (pageNumber) {
-      $scope.pageNumber = pageNumber;
-      $scope.LoadSanPham();
-  };
+
 
   // $scope.LoadSanPham = function (){
   //   $http({
