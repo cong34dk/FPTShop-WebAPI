@@ -36,7 +36,8 @@ var app = angular.module('AppBanDienThoai', []);
         $scope.LoadSanPham = function (){
             $http({
                 method: "GET",
-                url: "https://localhost:44388/api/SanPham/get-all"
+                // url: "https://localhost:44388/api/SanPham/get-all"
+                url: "https://localhost:7102/admin-gateway/SanPham/get-all"
             }).then(function (response) {
                 $scope.products = response.data;
             }).catch(function (error) {

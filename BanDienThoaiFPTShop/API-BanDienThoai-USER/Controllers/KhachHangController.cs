@@ -17,60 +17,60 @@ namespace API_BanDienThoai_USER.Controllers
         {
             _khachHangBL = khachHangBL;
         }
-        //Thêm mới 1 khách hàng
-        [Route("create-khachhang")]
-        [HttpPost]
-        public IActionResult createKhachHang([FromBody] KhachHangModel model)
-        {
-            try
-            {
-                _khachHangBL.InsertKhachHang(model.TenKh, model.GioiTinh, model.DiaChi, model.Sdt, model.Email);
-                return Ok("Khách hàng đã được thêm thành công!");
+        ////Thêm mới 1 khách hàng
+        //[Route("create-khachhang")]
+        //[HttpPost]
+        //public IActionResult createKhachHang([FromBody] KhachHangModel model)
+        //{
+        //    try
+        //    {
+        //        _khachHangBL.InsertKhachHang(model.TenKh, model.GioiTinh, model.DiaChi, model.Sdt, model.Email);
+        //        return Ok("Khách hàng đã được thêm thành công!");
 
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Lỗi: {ex.Message}");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest($"Lỗi: {ex.Message}");
 
-            }
-        }
-        //Tìm kiếm mã khách hàng theo id
-        [Route("get-by-id/{id}")]
-        [HttpGet]
-        public KhachHangModel getById(int id)
-        {
-            return _khachHangBL.getById(id);
-        }
-        //Update khách hàng
-        [Route("update-khachhang")]
-        [HttpPost]
-        public IActionResult updateKhachHang([FromBody] KhachHangModel model)
-        {
-            try
-            {
-                _khachHangBL.upDateKhachHang(model.Id, model.TenKh, model.GioiTinh, model.DiaChi, model.Sdt, model.Email);
-                return Ok("Đã update khách hàng thành công!");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Lỗi:{ex.Message}");
-            }
-        }
-        //Xóa khách hàng theo mã id
-        [Route("delete-khachhang/{id}")]
-        [HttpDelete]
-        public IActionResult DeleteKhachHang(int id)
-        {
-            try
-            {
-                _khachHangBL.deleteKhachHang(id);
-                return Ok($"Khách hàng với Id {id} đã được xóa thành công");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Lỗi: {ex.Message}");
-            }
-        }
+        //    }
+        //}
+        ////Tìm kiếm mã khách hàng theo id
+        //[Route("get-by-id/{id}")]
+        //[HttpGet]
+        //public KhachHangModel getById(int id)
+        //{
+        //    return _khachHangBL.getById(id);
+        //}
+        ////Update khách hàng
+        //[Route("update-khachhang")]
+        //[HttpPost]
+        //public IActionResult updateKhachHang([FromBody] KhachHangModel model)
+        //{
+        //    try
+        //    {
+        //        _khachHangBL.upDateKhachHang(model.Id, model.TenKh, model.GioiTinh, model.DiaChi, model.Sdt, model.Email);
+        //        return Ok("Đã update khách hàng thành công!");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest($"Lỗi:{ex.Message}");
+        //    }
+        //}
+        ////Xóa khách hàng theo mã id
+        //[Route("delete-khachhang/{id}")]
+        //[HttpDelete]
+        //public IActionResult DeleteKhachHang(int id)
+        //{
+        //    try
+        //    {
+        //        _khachHangBL.deleteKhachHang(id);
+        //        return Ok($"Khách hàng với Id {id} đã được xóa thành công");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest($"Lỗi: {ex.Message}");
+        //    }
+        //}
         //[Route("search")]
         //[HttpPost]
         //public IActionResult Search([FromBody] Dictionary<string,object> fromData)

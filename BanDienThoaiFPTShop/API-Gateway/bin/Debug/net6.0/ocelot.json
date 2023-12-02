@@ -10,7 +10,19 @@
         }
       ],
       "UpstreamPathTemplate": "/user-gateway/Home/{everything}",
-      "UpstreamHttpMethod": [ "GET" ]   
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/SanPham/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44388
+        }
+      ],
+      "UpstreamPathTemplate": "/admin-gateway/SanPham/{everything}",
+      "UpstreamHttpMethod": [ "GET" ]
     }
   ],
   "GlobalConfiguration": {
